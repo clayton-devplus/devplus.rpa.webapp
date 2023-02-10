@@ -7,10 +7,11 @@
     </div>
     <div class="col-md-6 mt-5">
       <h4 class="text-center">Login</h4>
-      <form class="form mt-4">
+      <form [formGroup]="loginForm" (submit)="login()" class="form mt-4">
 
           <div class="form-group">
               <input
+                  formControlName="userName"
                   class="form-control"
                   placeholder="Nome de Usuário"
                   autofocus>
@@ -18,12 +19,14 @@
 
           <div class="form-group">
               <input
+                  formControlName="password"
                   type="password"
                   class="form-control"
                   placeholder="Senha">
           </div>
 
           <button
+              [disabled]="loginForm.invalid"
               type="submit"
               class="btn btn-primary btn-block">
               login
