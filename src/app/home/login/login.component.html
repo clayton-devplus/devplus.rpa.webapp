@@ -6,7 +6,7 @@
            src="/assets/img/training.jpg">
     </div>
     <div class="col-md-6 mt-5">
-      <h4 class="text-center">Login</h4>
+      <h5 class="text-center display-4">Sm@rt Contábil</h5>
       <form [formGroup]="loginForm" (submit)="login()" class="form mt-4">
 
           <div class="form-group">
@@ -34,6 +34,11 @@
 
       </form>
       <p>Não é usuário?<a> Solicite agora acesso!</a></p>
+
+      <div *ngIf="loginFail" class="alert alert-danger" role="alert">
+        Usuário ou senha incorretos.
+      </div>
+
     </div>
   </div>
 

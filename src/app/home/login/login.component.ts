@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { AuthService } from "src/app/core/auth/auth.service";
 
 @Component({
@@ -9,9 +10,11 @@ import { AuthService } from "src/app/core/auth/auth.service";
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  @Input() loginFail = false;
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService ){
+              private authService: AuthService,
+              private router: Router ){
 
     this.loginForm = this.formBuilder.group({
 
@@ -34,7 +37,15 @@ export class LoginComponent implements OnInit {
 
     this.authService
         .authenticate(userName, password)
-        .subscribe(res => console.log, err => console.log(err))
+        .subscribe(() => {
+          console.log('logou');
+          this.router.navigate(['empresas']);
+        },
+          err => {
+            console.log(err);
+            this.loginForm.reset();
+            this.loginFail =true;
+          })
 
   }
 
