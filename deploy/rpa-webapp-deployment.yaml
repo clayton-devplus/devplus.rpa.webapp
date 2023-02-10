@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rpa-webapp-deployment
+  labels:
+    app: rpa-webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rpa-webapp
+  template:
+    metadata:
+      labels:
+        app: rpa-webapp
+    spec:
+      containers:
+      - name: rpa-webapp
+        image: gcr.io/devplus-gke/devplus/rpa.webapp:v1.0
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "100m"
+          limits:
+            memory: "200Mi"
+            cpu: "100m"
+        ports:
+          - name: http-port
+            containerPort: 80
+          - name: https-port
+            containerPort: 443
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: "Development"
+          - name: TZ
+            value: "America/Sao_Paulo"
+
