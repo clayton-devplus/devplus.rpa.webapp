@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         .authenticate(userName, password)
         .subscribe(() => {
           console.log('logou');
-          this.router.navigate(['empresas']);
+          this.router.navigate(['smart']);
         },
           err => {
             console.log(err);

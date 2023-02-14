@@ -1,9 +1,20 @@
 <header class="fixed-top shadow-sm">
   <nav class="navbar navbar-light bg-white">
-      <a class="navbar-brand">Smart Contábil</a>
+      <a class="navbar-brand"><i (click)="menu.toggle()" class="fa fa-bars mr-2"></i>Smart Contábil
+      </a>
+      <hr/>
+      <dev-menu #menu>
+
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action">Cadastro de Empresas</a>
+          <a href="#" class="list-group-item list-group-item-action">Cadastro de Certificados</a>
+          <a href="#" class="list-group-item list-group-item-action">Dados do Escritório</a>
+          <a href="#" class="list-group-item list-group-item-action">Status do Serviço</a>
+        </div>
+      </dev-menu>
       <div>
-          <i class="fa fa-user-circle"></i>
-          <a> </a>
+        <fa-icon [icon]="user" size="2x"></fa-icon>
       </div>
   </nav>
 </header>
+
