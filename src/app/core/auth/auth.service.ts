@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { tap } from "rxjs";
 import { TokenService } from "../token/token.service";
 
-const API = "http://35.198.30.217:3000"
+const API = "https://rpa.devplus.com.br"
 
 @Injectable({  providedIn: 'root'})
 export class AuthService {

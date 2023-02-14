@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
-const API = "http://35.198.30.217:3000"
+const API = "https://rpa.devplus.com.br"
 
 @Injectable({
   providedIn:'root'

@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Cnd } from "./models/cnd";
 
-const API = "https://localhost:7109"
+const API = "https://rpa.devplus.com.br"
 
 @Injectable({
   providedIn:'root'
