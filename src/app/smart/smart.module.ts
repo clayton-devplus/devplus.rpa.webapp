@@ -1,20 +1,26 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { AppRoutingModule } from "../app.routing.module";
 import { CoreModule } from "../core/core.module";
 import { HeaderComponent } from "../core/header/header.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EmpresasComponent } from "./empresas/empresas.component";
+import { SmartComponent } from "./smart.component";
 
 @NgModule({
     declarations: [
-      EmpresasComponent, 
+      EmpresasComponent,
+      SmartComponent,
+      DashboardComponent
     ],
     exports:[
       EmpresasComponent,
-      HeaderComponent
+      DashboardComponent
     ],
     imports:[
       CommonModule,
-      CoreModule
+      CoreModule,
+      AppRoutingModule
     ]
 })
 export class SmartModule { }

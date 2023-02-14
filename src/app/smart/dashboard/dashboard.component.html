@@ -1,0 +1,59 @@
+
+<div class="jumbotron col 6">
+    <h1 class="display-4">Bem vindo ao Smart Contábil</h1>
+
+    <hr class="my-4">
+    <p class="lead">Isso é só um teste.</p>
+
+</div>
+
+<div class="row">
+
+</div>
+
+<div class="card p1">
+
+  <div class="card-body">
+    <h5 class="card-title">Processamento CNDs</h5>
+    <table class="table table-hover border p1">
+      <thead>
+        <tr>
+
+          <th scope="col">Status</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cnd of cndStatus; index as i">
+
+          <td>{{ cnd.status }}</td>
+          <td>{{ cnd.total | number }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card p-2">
+
+  <div class="card-body">
+    <h5 class="card-title">Processamento GINFES</h5>
+    <table class="table table-striped border">
+      <thead>
+        <tr>
+
+          <th scope="col">Status</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cnd of cndStatus; index as i">
+
+          <td>{{ cnd.status }}</td>
+          <td>{{ cnd.total | number }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
