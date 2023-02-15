@@ -1,9 +1,13 @@
 <div [ngClass]="{ 'active-menu': isShow}">
   <div class="menu-bar">
       <i class="fa fa-window-close float-right" (click)="toggle()"></i>
-      <p><fa-icon [icon]="faHouse" size="2x"></fa-icon>
-       Contabil
+      <p><fa-icon [icon]="faHouse" size="2x" class="text-muted"></fa-icon>
+       <span class="navbar-brand mr-auto">&nbsp;&nbsp;Smart Contabil RPA</span>
+       <span class="mr-auto">&nbsp;&nbsp;Devplus Consultoria LTDA</span>
       </p>
+
+
+
       <hr/>
       <ng-content></ng-content>
   </div>

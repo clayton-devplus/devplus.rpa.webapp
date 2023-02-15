@@ -1,19 +1,20 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Router } from "@angular/router";
+import { catchError, map, Observable, throwError } from "rxjs";
 import { TokenService } from "../token/token.service";
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor{
 
-  constructor (private tokenService: TokenService) {
+  constructor (private tokenService: TokenService,
+               private router: Router) {
 
 
 
   }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler):
-            Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     if(this.tokenService.hasToken()) {
 
@@ -23,9 +24,16 @@ export class RequestInterceptor implements HttpInterceptor{
       })
 
     }
+    return next.handle(req).pipe(catchError( (error) => {
 
-    return next.handle(req)
+      if(error.status == 401)
+      {
+          this.tokenService.removeToken();
+          this.router.navigate(['/']);
+          return error;
+      }
 
+    })) as Observable<HttpEvent<any>>;
   }
 
 }

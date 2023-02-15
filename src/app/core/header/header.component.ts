@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser, faGears, faTools } from "@fortawesome/free-solid-svg-icons";
 import { Observable } from "rxjs";
 import { User } from "../user/user";
 import { UserService } from "../user/user.service";
@@ -10,7 +10,11 @@ import { UserService } from "../user/user.service";
 })
 export class HeaderComponent {
 
+  //Icones
   user = faCircleUser
+  faGears = faGears
+  faTools = faTools
+
   user$: Observable<User| null>;
   userInfo: User | null = null;
 

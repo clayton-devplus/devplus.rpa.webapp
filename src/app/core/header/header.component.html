@@ -5,12 +5,24 @@
       <hr/>
       <dev-menu #menu>
 
+        <p><fa-icon [icon]="faTools" size="2x" class="align-middle text-muted"></fa-icon> <span class="font-bold sm"> &nbsp;&nbsp;Geral</span></p>
         <div class="list-group">
           <a class="list-group-item list-group-item-action" [routerLink]="['']" >Dashboard</a>
           <a class="list-group-item list-group-item-action" [routerLink]="['empresas']" >Cadastro de Empresas</a>
           <a class="list-group-item list-group-item-action">Cadastro de Certificados</a>
           <a class="list-group-item list-group-item-action">Dados do Escritório</a>
           <a class="list-group-item list-group-item-action">Status do Serviço</a>
+        </div>
+
+        <hr/>
+
+        <p><fa-icon [icon]="faGears" size="2x" class="align-middle text-muted"></fa-icon> <span class="font-bold sm"> &nbsp;&nbsp;Processos</span></p>
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action" >GINFES</a>
+          <a class="list-group-item list-group-item-action" >Fechamentos GISS</a>
+          <a class="list-group-item list-group-item-action" >Certidões Negativas</a>
+          <a class="list-group-item list-group-item-action">PG-DAS</a>
+          <a class="list-group-item list-group-item-action">Relatórios e-CAC</a>
         </div>
       </dev-menu>
       <div>
