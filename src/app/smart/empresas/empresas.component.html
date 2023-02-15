@@ -1,22 +1,59 @@
-<div class="container">
-    <div class="jumbotron">
-        <h1 class="display-4">Bem vindo ao Smart Contábil</h1>
-        <p class="lead">Isso é só um teste.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
-    </div>
-</div>
 
-<div class="container-fluid">
+
+
+<div class="container-fluid col-10">
   <div class="card rounded shadow-lg" >
-    <div class="input-group row">
-      <div class="col mt-1">
-        <h5 class="align-middle text-muted"><fa-icon [icon]="faEnvelopeOpenText" size="lg"></fa-icon>&nbsp;&nbsp; EMPRESAS</h5>
+
+    <div class="card-header">
+
+      <div class="input-group row">
+        <div class="col mt-1">
+          <h5 class="align-middle text-muted"><fa-icon [icon]="faEnvelopeOpenText" size="lg"></fa-icon>&nbsp;&nbsp; EMPRESAS</h5>
+        </div>
+        <div class="col-5">
+          <div class="input-group">
+              <input class="form-control border-secondary py-2" type="search"placeholder="pesquisar..." autofocus="true">
+              <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button">
+                    <fa-icon [icon]="faSearch" size="sm"></fa-icon>
+                  </button>
+              </div>
+
+          </div>
+
+      </div>
+
+
       </div>
 
     </div>
+      <div class="table">
+
+        <table class="table p-4">
+
+          <thead>
+            <tr>
+              <th scope="col">&nbsp;ID</th>
+              <th scope="col">FANTASIA</th>
+              <th scope="col">CNPJ</th>
+              <!-- <th scope="col">DESCRICAO</th> -->
+              <th scope="col">TEL&nbsp;</th>
+              <th scope="col">CONTATO</th>
+            </tr>
+          </thead>
+
+          <tr *ngFor="let e of empresas">
+            <td  class="align-middle font-weight-light"><p>{{e.id}}</p></td>
+            <td  class="align-middle"><p >{{e.fantasia}}</p></td>
+            <td  class="align-middle"><p >{{e.cnpj}}</p></td>
+            <td  class="align-middle"><p >{{e.tel}}</p></td>
+            <td  class="align-middle"><p >{{e.contato}}</p></td>
+          </tr>
+
+
+        </table>
+
+      </div>
+
   </div>
 </div>

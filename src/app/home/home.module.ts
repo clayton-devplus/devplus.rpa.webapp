@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { LoginComponent } from "./login/login.component";
+import { CoreModule } from "../core/core.module";
 
 @NgModule({
     declarations: [LoginComponent],
@@ -11,7 +12,8 @@ import { LoginComponent } from "./login/login.component";
     imports: [
       CommonModule,
       HttpClientModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      CoreModule
     ]
 })
 export class HomeModule { }

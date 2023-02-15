@@ -6,15 +6,16 @@
       <dev-menu #menu>
 
         <div class="list-group">
+          <a class="list-group-item list-group-item-action" [routerLink]="['']" >Dashboard</a>
           <a class="list-group-item list-group-item-action" [routerLink]="['empresas']" >Cadastro de Empresas</a>
-          <a href="#" class="list-group-item list-group-item-action">Cadastro de Certificados</a>
-          <a href="#" class="list-group-item list-group-item-action">Dados do Escritório</a>
-          <a href="#" class="list-group-item list-group-item-action">Status do Serviço</a>
+          <a class="list-group-item list-group-item-action">Cadastro de Certificados</a>
+          <a class="list-group-item list-group-item-action">Dados do Escritório</a>
+          <a class="list-group-item list-group-item-action">Status do Serviço</a>
         </div>
       </dev-menu>
       <div>
         <fa-icon [icon]="user" size="2x" data-toggle="modal" data-target="#userInfoModal" class="align-middle text-muted"></fa-icon>
-        <a class="ml-2 font-weight-light">{{userInfo?.name}}</a>
+        <span class="ml-2 font-weight-light">{{userInfo?.name}}</span>
       </div>
   </nav>
 </header>
