@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { faFire } from "@fortawesome/free-solid-svg-icons";
 import { DashboardService } from "./dashboard.service";
 import { Cnd } from "./models/cnd";
 
@@ -11,6 +12,7 @@ import { Cnd } from "./models/cnd";
 export class DashboardComponent implements OnInit {
 
   cndStatus: Cnd[] = [];
+  faFire = faFire
 
   constructor(private dashboardService: DashboardService) {
 

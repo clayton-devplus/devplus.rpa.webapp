@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AppRoutingModule } from "../app.routing.module";
 import { CoreModule } from "../core/core.module";
 import { HeaderComponent } from "../core/header/header.component";
@@ -20,7 +21,8 @@ import { SmartComponent } from "./smart.component";
     imports:[
       CommonModule,
       CoreModule,
-      AppRoutingModule
+      AppRoutingModule,
+      FontAwesomeModule
     ]
 })
 export class SmartModule { }
