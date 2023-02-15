@@ -2,21 +2,26 @@ import { Injectable } from "@angular/core";
 
 const KEY = 'smart.token';
 @Injectable({  providedIn: 'root'})
-export class TokenService { 
+export class TokenService {
 
     hasToken() {
-        if(this.getToken() == null)
+        if(this.getToken() == '')
             return false;
         else
-            return true;    
+            return true;
     }
 
     setToken(token: string) {
         window.localStorage.setItem(KEY, token);
     }
 
-    getToken() {
-        window.localStorage.getItem(KEY);
+    getToken(): string {
+
+       let token = window.localStorage.getItem(KEY);
+       if(!token)
+        return '';
+      else
+        return token;
     }
 
     removeToken() {

@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { tap } from "rxjs";
 import { TokenService } from "../token/token.service";
+import { UserService } from "../user/user.service";
 
 const API = "https://rpa.devplus.com.br"
 
@@ -9,7 +10,7 @@ const API = "https://rpa.devplus.com.br"
 export class AuthService {
 
   constructor(private http: HttpClient,
-              private tokenService: TokenService) {
+              private userService: UserService) {
 
   }
 
@@ -22,7 +23,7 @@ export class AuthService {
     )
     .pipe(tap(res => {
         const authToken = res.body as any;
-        this.tokenService.setToken(authToken.token);
+        this.userService.setToken(authToken.token);
         console.log(res.headers.get('Baerer'));
         console.log(`User ${userName} authenticated with token ${authToken.token}`);
     }))

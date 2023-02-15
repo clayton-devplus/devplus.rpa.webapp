@@ -1,11 +1,11 @@
 <div class="container-fluid">
 
   <div class="jumbotron shadow">
-    <h1 class="display-4">Olá Usuário!</h1>
+    <h1 class="display-4">{{userInfo?.name}}!</h1>
     <p class="lead">Bem vindo ao Sm@rt Contábil, aqui você vai gerenciar de forma simples suas solicitações.<br/>
-    Você está logado pela empresa <b>user.razao.</b></p>
+    Você está logado pela empresa <b>{{userInfo?.name}}</b></p>
 
-  
+
       <hr class="my-4">
       <p class="lead"><fa-icon class="text-muted" [icon]="faFire"></fa-icon>&nbsp; Status de Processamento.</p>
       <ul *ngFor="let d of cndStatus" class="list-group list-group-flush">
@@ -13,20 +13,20 @@
       </ul>
 
       <div class="card p1">
-      
+
         <div class="card-body">
           <h5 class="card-title">Processamento CNDs</h5>
           <table class="table table-hover border p1">
             <thead>
               <tr>
-      
+
                 <th scope="col">Status</th>
                 <th scope="col">Total</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let cnd of cndStatus; index as i">
-      
+
                 <td>{{ cnd.status }}</td>
                 <td>{{ cnd.total | number }}</td>
               </tr>

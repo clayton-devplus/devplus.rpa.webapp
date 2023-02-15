@@ -13,8 +13,10 @@
         </div>
       </dev-menu>
       <div>
-        <fa-icon [icon]="user" size="2x"></fa-icon>
+        <fa-icon [icon]="user" size="2x" data-toggle="modal" data-target="#userInfoModal" class="align-middle text-muted"></fa-icon>
+        <a class="ml-2 font-weight-light">{{userInfo?.name}}</a>
       </div>
   </nav>
 </header>
 
+<dev-user-info></dev-user-info>
