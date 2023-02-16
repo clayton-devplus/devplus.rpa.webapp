@@ -7,6 +7,12 @@
 
 
       <hr class="my-4">
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Tudo Certo!</h4>
+        <p>Todos os serviços do SmartContábil estão funcionando corretamente. Alertas de instabilidade de serviços aparecerão nessa página.</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+      </div>
       <p class="lead"><fa-icon class="text-muted" [icon]="faFire"></fa-icon>&nbsp; Status de Processamento.</p>
       <ul *ngFor="let d of cndStatus" class="list-group list-group-flush">
         <li class="list-group-item list-group-item-danger"><span class="badge badge-secondary align-middle shadow">#{{d.total}}</span>&nbsp; - {{d.status}}</li>
