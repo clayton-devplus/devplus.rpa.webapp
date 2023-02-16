@@ -29,27 +29,27 @@
     </div>
       <div class="table">
 
-        <table class="table p-4">
+        <table class="table table-hover table-sm">
 
           <thead>
             <tr>
-              <th scope="col">&nbsp;ID</th>
+              <th scope="col">#ID</th>
               <th scope="col">FANTASIA</th>
               <th scope="col">CNPJ</th>
-              <!-- <th scope="col">DESCRICAO</th> -->
               <th scope="col">TEL&nbsp;</th>
               <th scope="col">CONTATO</th>
             </tr>
           </thead>
+          <tbody>
+            <tr *ngFor="let e of empresas">
+              <th scope="row"><span><b>#{{e.id}}</b></span></th>
+              <td><i>{{e.fantasia}}</i></td>
+              <td>{{e.cnpj}}</td>
+              <td>{{e.tel}}</td>
+              <td>{{e.contato}}</td>
+            </tr>
 
-          <tr *ngFor="let e of empresas">
-            <td  class="align-middle font-weight-light"><p>{{e.id}}</p></td>
-            <td  class="align-middle"><p >{{e.fantasia}}</p></td>
-            <td  class="align-middle"><p >{{e.cnpj}}</p></td>
-            <td  class="align-middle"><p >{{e.tel}}</p></td>
-            <td  class="align-middle"><p >{{e.contato}}</p></td>
-          </tr>
-
+          </tbody>
 
         </table>
 
