@@ -38,6 +38,7 @@
               <th scope="col">CNPJ</th>
               <th scope="col">TEL&nbsp;</th>
               <th scope="col">CONTATO</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -47,6 +48,7 @@
               <td>{{e.cnpj}}</td>
               <td>{{e.tel}}</td>
               <td>{{e.contato}}</td>
+              <td><fa-icon (click)="empresaForm.loadEditEmpresa(e)" data-toggle="modal" data-target="#empresaFormModal" [icon]="faEdit" size="sm"></fa-icon></td>
             </tr>
 
           </tbody>

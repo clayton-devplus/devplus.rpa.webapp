@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { faEnvelopeOpenText, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faEnvelopeOpenText, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Empresa } from "./empresa";
 import { EmpresasService } from "./empresas.service";
 
@@ -12,6 +12,8 @@ export class EmpresasComponent {
 
   faEnvelopeOpenText = faEnvelopeOpenText;
   faSearch = faSearch;
+  faEdit = faEdit;
+
   empresas: Empresa[] = [];
 
   constructor(private empresasService: EmpresasService) {
