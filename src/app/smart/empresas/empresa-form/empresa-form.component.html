@@ -13,7 +13,7 @@
         <div class="modal-body">
           <div>
  
-              <form>
+              <form [formGroup] ="empresaForm">
                 <div class="form-row pb-3">
                   <fa-icon [icon]="faGears" size="1x" class="align-middle text-muted"></fa-icon>
                   <span class="font-bold text-muted ml-2"><b> Geral</b></span>
@@ -21,29 +21,29 @@
                   <div class="form-row">
                     <div class="form-group col-md-1">
                       <label for="inputID" class="font-weight-bold">ID</label>
-                      <input type="text" class="form-control" id="inputID" >
+                      <input formControlName="id" type="text" class="form-control" id="inputID" >
                     </div>
                     <div class="form-group col-md-8">
                       <label for="inputRazao" class="font-weight-bold">Razão Social</label>
-                      <input type="text" class="form-control" id="inputRazao" >
+                      <input formControlName="razao" type="text" class="form-control" id="inputRazao" >
                     </div>
                     <div class="form-group col-md-3">
                         <label for="inputCnpj" class="font-weight-bold">CNPJ</label>
-                        <input type="text" class="form-control" id="inputCnpj" >
+                        <input formControlName="cnpj" type="text" class="form-control" id="inputCnpj" >
                       </div>
                   </div>
                   <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputFantasia" class="font-weight-bold">Fantasia</label>
-                        <input type="text" class="form-control" id="inputFantasia">
+                        <input formControlName="fantasia" type="text" class="form-control" id="inputFantasia">
                       </div>
                       <div class="form-group col-md-3">
                         <label for="inputContato" class="font-weight-bold">Contato</label>
-                        <input type="text" class="form-control" id="inputContato">
+                        <input formControlName="contato" type="text" class="form-control" id="inputContato">
                       </div>
                       <div class="form-group col-md-3">
                         <label for="inputTel" class="font-weight-bold">Tel</label>
-                        <input type="text" class="form-control" id="inputTel">
+                        <input formControlName="tel" type="text" class="form-control" id="inputTel">
                       </div>
                   </div>
 
@@ -55,20 +55,20 @@
                     <div class="form-row">
                       <div class="form-group col-md-4">
                         <label for="inputID" class="font-weight-bold">Usuário</label>
-                        <input type="text" class="form-control" id="inputID" >
+                        <input formControlName="usuario_ginfes" type="text" class="form-control" id="inputID" >
                       </div>
                       <div class="form-group col-md-4">
                         <label for="inputRazao" class="font-weight-bold">Senha</label>
-                        <input type="text" class="form-control" id="inputRazao" >
+                        <input formControlName="senha_ginfes" type="text" class="form-control" id="inputRazao" >
                       </div>
                       <div class="form-group col-md-4">
                           <label for="inputCnpj" class="font-weight-bold">Código Mun.</label>
-                          <input type="text" class="form-control" id="inputCnpj" >
+                          <input formControlName="cod_ibge_mun" type="text" class="form-control" id="inputCnpj" >
                     </div>
                     </div>
                     <div class="form-group">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="gridCheck">
+                          <input formControlName="smart_ginfes" class="form-check-input" type="checkbox" id="gridCheck">
                           <label class="form-check-label" for="gridCheck">
                             Ativar serviço RPA GINFES
                           </label>
@@ -83,20 +83,20 @@
                         <div class="form-row">
                           <div class="form-group col-md-4">
                             <label for="inputID" class="font-weight-bold">Usuário</label>
-                            <input type="text" class="form-control" id="inputID" >
+                            <input formControlName="usuario_giss" type="text" class="form-control" id="inputID" >
                           </div>
                           <div class="form-group col-md-4">
                             <label for="inputRazao" class="font-weight-bold">Senha</label>
-                            <input type="text" class="form-control" id="inputRazao" >
+                            <input formControlName="senha_giss" type="text" class="form-control" id="inputRazao" >
                           </div>
                           <div class="form-group col-md-4">
                             <label for="inputRazao" class="font-weight-bold">Dia Fechamento</label>
-                            <input type="text" class="form-control" id="inputRazao">
+                            <input formControlName="dia_fechamento" type="text" class="form-control" id="inputRazao">
                           </div>
                         </div>
                         <div class="form-group">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                              <input formControlName="smart_giss" class="form-check-input" type="checkbox" id="gridCheck">
                               <label class="form-check-label" for="gridCheck">
                                 Ativar GISS Fechamentos
                               </label>
@@ -108,15 +108,80 @@
                       <fa-icon [icon]="faGears" size="1x" class="align-middle text-muted"></fa-icon>
                       <span class="font-bold text-muted ml-2"><b> Certidões</b></span>
                     </div>
+
+                    <div class = "container">
+                      <div class="row">
+                        <fieldset class="col-sm-6">
+                          <div class="form-group">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input formControlName="smart_cnd" type="checkbox" class="form-check-input" value="">(103) CND Federal
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input formControlName="cnd_104" type="checkbox" class="form-check-input" value="">(104) Regularidade de FGTS
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input formControlName="cnd_105" type="checkbox" class="form-check-input" value="">(105) Débitos Trabalhistas
+                              </label>
+                            </div>
+                          </div>
+                        </fieldset>
+
+                        <fieldset class="col-sm-6">
+
+                          <div class="form-group">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input formControlName="cnd_106" type="checkbox" class="form-check-input" value="">(106) Optante do Simples
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" value="">(107) Reabilitados Previdência
+                              </label>
+                            </div>
+                          </div>
+                          
+                        </fieldset>
+
+                      </div>
+                    </div>
+
+
+                    <hr/>
+                    <div class="form-row pb-3">
+                      <fa-icon [icon]="faGears" size="1x" class="align-middle text-muted"></fa-icon>
+                      <span class="font-bold text-muted ml-2"><b> e-CAC - Relatórios</b></span>
+                    </div>
                     
-                    <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <div class = "container">
+                      <div class="row">
+                        <fieldset class="col-sm-6">
+                          <div class="form-group">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input formControlName="ecac_108" type="checkbox" class="form-check-input" value="">(105) Situação Fiscal
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input formControlName="ecac_109" type="checkbox" class="form-check-input" value="">(108) Complementar de Situação Fiscal
+                              </label>
+                            </div>
+                          </div>
+                        </fieldset>
+
+                        <fieldset class="col-sm-6">
+                          
+                        </fieldset>
+
+                      </div>
                     </div>
-                    <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
+
  
                 </form>
   
