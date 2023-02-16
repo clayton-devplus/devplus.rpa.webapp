@@ -32,10 +32,18 @@ export class RequestInterceptor implements HttpInterceptor{
           this.router.navigate(['/']);
           return error;
       }
+      else if(error.status == 0)
+      {
+          console.log('erro = 0!');
+          console.log(error);
+
+          this.tokenService.removeToken();
+          this.router.navigate(['/']);
+      }
       else
       {
-        console.log('Erro não tratado no interceptor');
-        console.log(error);
+          console.log('Erro não tratado no interceptor');
+          console.log(error);
       }
 
     })) as Observable<HttpEvent<any>>;
