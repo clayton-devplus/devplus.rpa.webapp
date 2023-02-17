@@ -16,7 +16,7 @@ export class EmpresasService {
     }
 
     updateEmpresa(empresa: Empresa) {
-        return this.http.post<Empresa[]>(API + '/empresas/update/' + empresa.id, empresa);
+        return this.http.post(API + '/empresas/update/', empresa);
 
     }
 

@@ -4,15 +4,15 @@
       <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title text-muted" id="exampleModalLabel"><fa-icon [icon]="faBug" size="lg"></fa-icon>&nbsp;&nbsp; Configuração de Empresa </h5>
-      
+
             <button #closeAddExpenseModal type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-      
+
         </div>
         <div class="modal-body">
           <div>
- 
+
               <form [formGroup] ="empresaForm">
                 <div class="form-row pb-3">
                   <fa-icon [icon]="faGears" size="1x" class="align-middle text-muted"></fa-icon>
@@ -145,7 +145,7 @@
                               </label>
                             </div>
                           </div>
-                          
+
                         </fieldset>
 
                       </div>
@@ -157,7 +157,7 @@
                       <fa-icon [icon]="faGears" size="1x" class="align-middle text-muted"></fa-icon>
                       <span class="font-bold text-muted ml-2"><b> e-CAC - Relatórios</b></span>
                     </div>
-                    
+
                     <div class = "container">
                       <div class="row">
                         <fieldset class="col-sm-6">
@@ -176,24 +176,24 @@
                         </fieldset>
 
                         <fieldset class="col-sm-6">
-                          
+
                         </fieldset>
 
                       </div>
                     </div>
 
- 
+
                 </form>
-  
+
           </div>
         </div>
         <div class="modal-footer">
-          <button *ngIf="isEdit" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+          <button *ngIf="isEdit" type="button" class="btn btn-primary" data-dismiss="modal" (click)="prepareUpdate()" >Salvar</button>
           <button *ngIf="isEdit" type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
           <button *ngIf="!isEdit" type="button" class="btn btn-dark" data-dismiss="modal">Voltar</button>
         </div>
       </div>
     </div>
   </div>
-  
+
 

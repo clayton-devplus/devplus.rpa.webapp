@@ -8,7 +8,7 @@ import { EmpresasService } from "../empresas.service";
     selector:'dev-empresa-form',
     templateUrl:'./empresa-form.component.html'
 })
-export class EmpresaFormComponent { 
+export class EmpresaFormComponent {
 
     faBug = faUserEdit;
     faGears = faGears;
@@ -19,10 +19,10 @@ export class EmpresaFormComponent {
 
     constructor (private formBuilder: FormBuilder,
                  private empresaService: EmpresasService) {
-        
+
         //Construcao de formulario de empresa
         this.empresaForm = this.formBuilder.group({
-            
+
             id: [''],
             razao: [''],
             fantasia: [''],
@@ -55,7 +55,7 @@ export class EmpresaFormComponent {
 
         this.empresaForm.reset();
         this.empresaForm.enable();
-        
+
         this.empresaForm.controls['id'].disable();
         this.empresaForm.controls['id'].setValue(empresa.id);
 
@@ -88,7 +88,7 @@ export class EmpresaFormComponent {
         this.isEdit = false;
 
         this.empresaForm.reset();
-        
+
         this.empresaForm.controls['id'].disable();
         this.empresaForm.controls['id'].setValue(empresa.id);
 
@@ -106,7 +106,7 @@ export class EmpresaFormComponent {
 
         this.empresaForm.controls['cnpj'].disable();
         this.empresaForm.controls['cnpj'].setValue(empresa.cnpj);
-    
+
         this.empresaForm.controls['senha_ginfes'].disable();
         this.empresaForm.controls['senha_ginfes'].setValue(empresa.senha_ginfes);
         this.empresaForm.controls['usuario_ginfes'].disable();
@@ -140,6 +140,36 @@ export class EmpresaFormComponent {
         this.empresaForm.controls['ecac_109'].disable();
         this.empresaForm.controls['ecac_109'].setValue(empresa.ecac_109);
 
+    }
+
+    prepareUpdate()
+    {
+      var empresa: Empresa = this.empresaEdit as Empresa;
+
+      empresa.razao = this.empresaForm.controls['razao'].value;
+      empresa.fantasia = this.empresaForm.controls['fantasia'].value;
+      empresa.tel = this.empresaForm.controls['tel'].value;
+      empresa.contato = this.empresaForm.controls['contato'].value;
+      empresa.cnpj = this.empresaForm.controls['cnpj'].value;
+
+      empresa.senha_ginfes = this.empresaForm.controls['senha_ginfes'].value;
+      empresa.usuario_ginfes = this.empresaForm.controls['usuario_ginfes'].value;
+      empresa.smart_ginfes = this.empresaForm.controls['smart_ginfes'].value;
+
+      empresa.senha_giss = this.empresaForm.controls['senha_giss'].value;
+      empresa.smart_giss = this.empresaForm.controls['smart_giss'].value;
+      empresa.usuario_giss = this.empresaForm.controls['usuario_giss'].value;
+
+      empresa.smart_cnd = this.empresaForm.controls['smart_cnd'].value;
+      empresa.cnd_104 = this.empresaForm.controls['cnd_104'].value;
+      empresa.cnd_105 = this.empresaForm.controls['cnd_105'].value;
+      empresa.cnd_106 = this.empresaForm.controls['cnd_106'].value;
+
+      empresa.ecac_108 = this.empresaForm.controls['ecac_108'].value;
+      empresa.ecac_109 = this.empresaForm.controls['ecac_109'].value;
+
+
+      this.updateEmpresa(empresa);
     }
 
     updateEmpresa(empresa: Empresa) {
