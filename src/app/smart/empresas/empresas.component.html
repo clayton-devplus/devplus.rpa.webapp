@@ -5,14 +5,17 @@
   <div class="card rounded shadow-lg" >
 
     <div class="card-header">
-
+{{filter}}
       <div class="input-group row">
         <div class="col mt-1">
-          <h5 class="align-middle text-muted"><fa-icon [icon]="faEnvelopeOpenText" size="lg" data-toggle="modal" data-target="#empresaFormModal"></fa-icon>&nbsp;&nbsp; EMPRESAS</h5>
+          <h5 class="align-middle text-muted">
+            <fa-icon [icon]="faEnvelopeOpenText" size="lg" data-toggle="modal" data-target="#empresaFormModal">
+            </fa-icon>&nbsp;&nbsp; EMPRESAS</h5>
         </div>
         <div class="col-5">
           <div class="input-group">
-              <input class="form-control border-secondary py-2" type="search"placeholder="pesquisar..." autofocus="true">
+              <input class="form-control border-secondary py-2" type="search" placeholder="pesquisar..." autofocus="true"
+              (keyup)="debounce.next($any($event.target).value)">
               <div class="input-group-append">
                   <button class="btn btn-outline-secondary" type="button">
                     <fa-icon [icon]="faSearch" size="sm"></fa-icon>

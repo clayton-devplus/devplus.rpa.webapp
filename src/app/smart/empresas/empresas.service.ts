@@ -15,6 +15,11 @@ export class EmpresasService {
 
     }
 
+    pesquisaEmpresas(src: string) {
+      return this.http.get<Empresa[]>(API + '/empresas/search/' + src);
+
+  }
+
     updateEmpresa(empresa: Empresa) {
         return this.http.post(API + '/empresas/update/', empresa);
 
