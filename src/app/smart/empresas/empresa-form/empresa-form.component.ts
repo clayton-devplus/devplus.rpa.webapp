@@ -1,8 +1,8 @@
-import { group } from "@angular/animations";
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { faGears, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import { Empresa } from "../empresa";
+import { EmpresasService } from "../empresas.service";
 
 @Component({
     selector:'dev-empresa-form',
@@ -14,8 +14,11 @@ export class EmpresaFormComponent {
     faGears = faGears;
 
     empresaForm: FormGroup;
+    isEdit = false;
+    empresaEdit: Empresa | null = null;
 
-    constructor (private formBuilder: FormBuilder) {
+    constructor (private formBuilder: FormBuilder,
+                 private empresaService: EmpresasService) {
         
         //Construcao de formulario de empresa
         this.empresaForm = this.formBuilder.group({
@@ -45,6 +48,10 @@ export class EmpresaFormComponent {
     }
 
     loadEditEmpresa(empresa: Empresa) {
+
+        this.isEdit = true;
+        this.empresaEdit = empresa;
+
 
         this.empresaForm.reset();
         this.empresaForm.enable();
@@ -77,6 +84,8 @@ export class EmpresaFormComponent {
     }
 
     loadViewEmpresa(empresa: Empresa) {
+
+        this.isEdit = false;
 
         this.empresaForm.reset();
         
@@ -131,6 +140,11 @@ export class EmpresaFormComponent {
         this.empresaForm.controls['ecac_109'].disable();
         this.empresaForm.controls['ecac_109'].setValue(empresa.ecac_109);
 
+    }
+
+    updateEmpresa(empresa: Empresa) {
+        this.empresaService.updateEmpresa(empresa)
+        .subscribe();
     }
 
 }

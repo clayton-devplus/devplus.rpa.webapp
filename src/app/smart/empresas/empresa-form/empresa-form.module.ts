@@ -6,7 +6,12 @@ import { EmpresaFormComponent } from "./empresa-form.component";
 
 @NgModule({
     declarations:[EmpresaFormComponent],
-    imports:[CommonModule, ReactiveFormsModule, FontAwesomeModule, FormsModule],
+    imports:[
+        CommonModule, 
+        ReactiveFormsModule, 
+        FontAwesomeModule, 
+        FormsModule
+    ],
     exports:[EmpresaFormComponent]
 })
 export class EmpresaFormModule {}
