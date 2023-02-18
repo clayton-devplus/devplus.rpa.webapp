@@ -46,13 +46,22 @@
           <tbody>
             <tr *ngFor="let e of certidoes">
               <th scope="row"><span><b>#{{e.id}}</b></span></th>
-              <td >{{e.obrigacao}}</td>
+              <td >
+                <span *ngIf= "e.obrigacao == '000103'"class="badge badge-info">Federal</span>
+                <span *ngIf= "e.obrigacao == '000104'"class="badge badge-info">FGTS</span>
+                <span *ngIf= "e.obrigacao == '000105'"class="badge badge-info">D.Tabalhistas</span>
+                <span *ngIf= "e.obrigacao == '000106'"class="badge badge-info">Simples</span>
+                <span *ngIf= "e.obrigacao == '000107'"class="badge badge-info">R.Previdência</span>
+              </td>
               <td >{{e.competencia}}</td>
               <td >{{e.cnpj}}</td>
               <td *ngIf= "e.cstat == '100'" class="font-italic"><span class="badge badge-success">{{e.cstat}}</span></td>
+              <td *ngIf= "e.cstat == '101'" class="font-italic"><span class="badge badge-danger">{{e.cstat}}</span></td>
+              <td *ngIf= "e.cstat == '10'" class="font-italic"><span class="badge badge-warning">{{e.cstat}}</span></td>
+              <td *ngIf= "e.cstat == '1'" class="font-italic"><span class="badge badge-warning">{{e.cstat}}</span></td>
               <td >{{e.observacao}}</td>
-              <td class="font-italic"><span class="badge badge-light">{{e.token}}</span></td>
-              <td></td>
+              <td class="font-italic"><span class="badge badge-dark">{{e.token}}</span></td>
+              <td ><span class="badge badge-info"><fa-icon [icon]="faPaperclip" class="text-muted"></fa-icon>&nbsp;&nbsp;<a (click)="downloadFile(e.token + '.' + e.filetype, e.arquivo)">download</a></span></td>
             </tr>
 
           </tbody>

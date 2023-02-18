@@ -8,7 +8,7 @@ export interface Certidao {
     codigocontrolecertidao: string;
     observacao: string;
     tempo: number;
-    arquivo: string;
+    arquivo: Text;
     obrigacao: string;
     filetype: string;
     token: string;

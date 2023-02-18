@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { faEdit, faEnvelopeOpenText, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faEnvelopeOpenText, faPaperclip, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Subject } from "rxjs";
 import { Empresa } from "../../empresas/empresa";
 import { Certidao } from "../certidoes";
@@ -14,7 +14,7 @@ export class CertidoesListComponent {
     faEnvelopeOpenText = faEnvelopeOpenText;
     faSearch = faSearch;
     faEdit = faEdit;
-  
+    faPaperclip = faPaperclip;
     certidoes: Certidao[] = [];
   
     filter: string ='';
@@ -26,5 +26,20 @@ export class CertidoesListComponent {
         .subscribe(cert => this.certidoes = cert);
 
     }
+
+    downloadFile(name: string, data: Text)
+    {
+
+        console.log(data);
+          const linkSource = 'data:application/octet-stream;base64,' + data;
+          //const linkSource = data;
+          const downloadLink = document.createElement("a");
+          const fileName = name;
+
+          downloadLink.href = linkSource;
+          downloadLink.download = fileName;
+          downloadLink.click();
+    }
+  
 
 }
