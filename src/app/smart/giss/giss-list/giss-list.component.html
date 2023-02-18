@@ -1,0 +1,78 @@
+
+<div class="container-fluid col-10">
+    <div class="card rounded shadow-lg" >
+  
+      <div class="card-header">
+        <div class="input-group row">
+          <div class="col mt-1">
+            <h5 class="align-middle text-muted">
+              <fa-icon [icon]="faEnvelopeOpenText" size="lg" data-toggle="modal" data-target="#empresaFormModal">
+              </fa-icon>&nbsp;&nbsp; GISS - FECHAMENTOS</h5>
+          </div>
+          <div class="col-5">
+            <div class="input-group">
+                <input class="form-control border-secondary py-2" type="search" placeholder="pesquisar..." autofocus="true"
+                (keyup)="debounce.next($any($event.target).value)">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">
+                      <fa-icon [icon]="faSearch" size="sm"></fa-icon>
+                    </button>
+                </div>
+  
+            </div>
+  
+        </div>
+  
+  
+        </div>
+  
+      </div>
+        <div class="table">
+  
+          <table class="table table-hover table-sm">
+  
+            <thead>
+              <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">CERTIDÃO.</th>
+                <th scope="col">COMPET.</th>
+                <th scope="col">CNPJ</th>
+                <th scope="col">STAUS&nbsp;</th>
+                <th scope="col">OBS&nbsp;</th>
+                <th scope="col">TOKEN/RPA</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle bs-callout bs-callout-warning" *ngFor="let e of GissList">
+                <th scope="row"><span><b>#{{e.id}}</b></span></th>
+                <td >
+                  <span *ngIf= "e.obrigacao == '000103'"class="badge badge-info">Federal</span>
+                  <span *ngIf= "e.obrigacao == '000104'"class="badge badge-info">FGTS</span>
+                  <span *ngIf= "e.obrigacao == '000105'"class="badge badge-info">D.Tabalhistas</span>
+                  <span *ngIf= "e.obrigacao == '000106'"class="badge badge-info">Simples</span>
+                  <span *ngIf= "e.obrigacao == '000107'"class="badge badge-info">R.Previdência</span>
+                </td>
+                <td >{{e.diacompetencia}}</td>
+                <td >{{e.cnpj}}</td>
+                <td *ngIf= "e.cstat == '100'" class="font-italic"><span class="badge badge-success">Emitida</span></td>
+                <td *ngIf= "e.cstat == '101'" class="font-italic"><span class="badge badge-danger">Bloqueada</span></td>
+                <td *ngIf= "e.cstat == '10'" class="font-italic"><span class="badge badge-warning">Processando</span></td>
+                <td *ngIf= "e.cstat == '1'" class="font-italic"><span class="badge badge-warning">Solicitada</span></td>
+                <td >{{e.observacao}}</td>
+                <td class="font-italic">
+                  <span class="badge badge-dark">{{e.token}}</span>
+                  <span class="badge badge-dark">{{e.instance_name}}</span>
+                </td>
+                <td ><span class="badge badge-info"><fa-icon [icon]="faPaperclip" class="text-muted" ></fa-icon>&nbsp;&nbsp;<a (click)="downloadFile(e.token + '.' + e.filetype, e.arquivo)">download</a></span></td>
+              </tr>
+  
+            </tbody>
+  
+          </table>
+  
+        </div>
+  
+    </div>
+  </div>
+  
