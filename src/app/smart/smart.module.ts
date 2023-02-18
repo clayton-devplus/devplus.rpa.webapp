@@ -4,6 +4,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { AppRoutingModule } from "../app.routing.module";
 import { CoreModule } from "../core/core.module";
 import { HeaderComponent } from "../core/header/header.component";
+import { CertidoesModule } from "./certidoes/certidoes.module";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EmpresaFormComponent } from "./empresas/empresa-form/empresa-form.component";
 import { EmpresasComponent } from "./empresas/empresas.component";
@@ -23,7 +24,8 @@ import { SmartComponent } from "./smart.component";
       CoreModule,
       AppRoutingModule,
       FontAwesomeModule,
-      EmpresaModule
+      EmpresaModule,
+      CertidoesModule
     ]
 })
 export class SmartModule { }
