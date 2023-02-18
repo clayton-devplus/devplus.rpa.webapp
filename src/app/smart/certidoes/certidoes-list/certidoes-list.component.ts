@@ -27,6 +27,21 @@ export class CertidoesListComponent {
 
     }
 
+    // returnStyleRow(status: string): string {
+
+    //     if(lic.id_impacto == 1)
+    //       return 'align-middle bs-callout bs-callout-danger';
+    //     else if(lic.id_impacto == 2)
+    //       return 'align-middle bs-callout bs-callout-warning';
+    //     else if(lic.id_impacto == 3)
+    //       return 'align-middle bs-callout bs-callout-primary';
+    //     else if(lic.id_impacto == 4)
+    //       return 'align-middle bs-callout bs-callout-default';
+    //     else
+    //       return 'align-middle bs-callout bs-callout-default';
+    //   }
+    
+
     downloadFile(name: string, data: Text)
     {
 
