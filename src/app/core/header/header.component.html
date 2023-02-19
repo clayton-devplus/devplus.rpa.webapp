@@ -18,8 +18,8 @@
 
         <p><fa-icon [icon]="faGears" size="2x" class="align-middle text-muted"></fa-icon> <span class="font-bold sm"> &nbsp;&nbsp;Processos</span></p>
         <div class="list-group">
-          <a class="list-group-item list-group-item-action" >GINFES</a>
-          <a class="list-group-item list-group-item-action" >Fechamentos GISS</a>
+          <a class="list-group-item list-group-item-action" [routerLink]="['ginfes']">GINFES</a>
+          <a class="list-group-item list-group-item-action" [routerLink]="['giss']">Fechamentos GISS</a>
           <a class="list-group-item list-group-item-action" [routerLink]="['certidoes']">Certidões Negativas</a>
           <a class="list-group-item list-group-item-action">PG-DAS</a>
           <a class="list-group-item list-group-item-action">Relatórios e-CAC</a>

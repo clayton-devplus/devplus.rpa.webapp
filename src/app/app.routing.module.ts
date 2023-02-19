@@ -6,6 +6,8 @@ import { LoginComponent } from "./home/login/login.component";
 import { CertidoesListComponent } from "./smart/certidoes/certidoes-list/certidoes-list.component";
 import { DashboardComponent } from "./smart/dashboard/dashboard.component";
 import { EmpresasComponent } from "./smart/empresas/empresas.component";
+import { GinfesListComponent } from "./smart/ginfes/ginfes-list/ginfes-list.component";
+import { GissListComponent } from "./smart/giss/giss-list/giss-list.component";
 import { SmartComponent } from "./smart/smart.component";
 
 const routes: Routes = [
@@ -29,6 +31,14 @@ const routes: Routes = [
         {
           path: 'certidoes',
           component: CertidoesListComponent
+        },
+        {
+          path: 'ginfes',
+          component: GinfesListComponent
+        },
+        {
+          path: 'giss',
+          component: GissListComponent
         }
       ],
       canActivate: [NotLoggedGuard]

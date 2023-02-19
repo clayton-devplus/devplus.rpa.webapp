@@ -9,6 +9,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { EmpresaFormComponent } from "./empresas/empresa-form/empresa-form.component";
 import { EmpresasComponent } from "./empresas/empresas.component";
 import { EmpresaModule } from "./empresas/empresas.module";
+import { GinfesModule } from "./ginfes/ginfes.module";
+import { GissModule } from "./giss/giss.module";
 import { SmartComponent } from "./smart.component";
 
 @NgModule({
@@ -25,7 +27,9 @@ import { SmartComponent } from "./smart.component";
       AppRoutingModule,
       FontAwesomeModule,
       EmpresaModule,
-      CertidoesModule
+      CertidoesModule,
+      GinfesModule,
+      GissModule
     ]
 })
 export class SmartModule { }
