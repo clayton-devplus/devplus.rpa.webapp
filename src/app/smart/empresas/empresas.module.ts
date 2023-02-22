@@ -8,15 +8,15 @@ import { EmpresasComponent } from "./empresas.component";
 
 @NgModule({
     declarations:[
-        EmpresasComponent,
+        EmpresasComponent
     ],
     exports:[
         EmpresasComponent
     ],
     imports: [
         CommonModule,
-        EmpresaFormModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        EmpresaFormModule
     ]
 })
 export class EmpresaModule { }
