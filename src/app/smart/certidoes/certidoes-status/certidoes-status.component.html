@@ -1,0 +1,67 @@
+<!-- Modal -->
+<div class="modal fade" id="certidoesStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Resumo de Processamento CND - ({{certidaoEdit?.cstat}})</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup] ="certidaoForm">
+          <div class="form-row pb-3">
+            <fa-icon [icon]="faGears" size="1x" class="align-middle text-muted"></fa-icon>
+            <span class="font-bold text-muted ml-2"><b> Geral</b></span>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="inputID" class="font-weight-bold">ID</label>
+              <input formControlName="id" type="text" class="form-control" id="inputID" >
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputRazao" class="font-weight-bold">Emissão</label>
+              <input formControlName="datahoraemissao" type="text" class="form-control" id="inputRazao" >
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCnpj" class="font-weight-bold">Validade</label>
+                <input formControlName="datavalidade" type="text" class="form-control" id="inputCnpj" >
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputCnpj" class="font-weight-bold">Status</label>
+              <input formControlName="cstat" type="text" class="form-control" id="inputCnpj" >
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="inputID" class="font-weight-bold">ID</label>
+              <input formControlName="id" type="text" class="form-control" id="inputID" >
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputRazao" class="font-weight-bold">Emissão</label>
+              <input formControlName="datahoraemissao" type="text" class="form-control" id="inputRazao" >
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCnpj" class="font-weight-bold">Validade</label>
+                <input formControlName="datavalidade" type="text" class="form-control" id="inputCnpj" >
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputCnpj" class="font-weight-bold">Status</label>
+              <input formControlName="cstat" type="text" class="form-control" id="inputCnpj" >
+            </div>
+          </div>
+
+          <hr/>
+          <img *ngIf="this.certidaoEdit?.filetype =='png'" class="img-fluid" [src]="this.encodedReport">
+          <iframe *ngIf="this.certidaoEdit?.filetype =='pdf'" style="height: 50vh" class="embed-responsive" type="application/pdf" [src]="this.safeEncodedReport"></iframe>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
