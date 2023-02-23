@@ -28,7 +28,7 @@ export class GinfesListComponent {
                 private empresaService: EmpresasService){
 
         this.ginfeService.listGinfes()
-        .subscribe(ginfes => {this.GinfesList = ginfes; console.log()});
+        .subscribe(ginfes => {this.GinfesList = ginfes;});
 
     }
 
