@@ -19,6 +19,8 @@ export class CertidoesStatusComponent {
   encodedReport: string = '';
   safeEncodedReport: SafeResourceUrl | null;
 
+  displayStyle = "none";
+
   constructor (private formBuilder: FormBuilder,
                private certidaoService: CertidoesService,
                private sanitizer: DomSanitizer) {
@@ -40,32 +42,44 @@ export class CertidoesStatusComponent {
           });
 
   }
-
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
   editCertidao(certidao: Certidao) {
 
-    if(certidao.filetype == 'png')
-      this.encodedReport = 'data:image/png;base64,' + certidao.arquivo;
-    else
-    {
-      this.safeEncodedReport = this.sanitizer.bypassSecurityTrustResourceUrl('data:application/pdf;base64,' + certidao.arquivo.toString());
-    }
-
-    this.certidaoEdit = certidao;
-
     this.certidaoForm.reset();
-    this.certidaoForm.disable();
+    this.certidaoEdit = certidao;
+    this.encodedReport = '';
+    this.safeEncodedReport = '';
+    this.certidaoService.getDocument(certidao.id).subscribe(file => {
 
-    this.certidaoForm.controls['id'].setValue(certidao.id);
+          certidao.arquivo = file;
+          if(certidao.filetype == 'png')
+            this.encodedReport = 'data:image/png;base64,' + certidao.arquivo;
+          else
+          {
+            this.safeEncodedReport = this.sanitizer.bypassSecurityTrustResourceUrl('data:application/pdf;base64,' + certidao.arquivo.toString());
+          }
+          this.certidaoForm.disable();
 
-    this.certidaoForm.controls['datahoraemissao'].setValue(certidao.datahoraemissao);
-    this.certidaoForm.controls['datavalidade'].setValue(certidao.datavalidade.toLocaleString());
-    this.certidaoForm.controls['cnpj'].setValue(certidao.cnpj);
-    this.certidaoForm.controls['cstat'].setValue(certidao.cstat);
+          this.certidaoForm.controls['id'].setValue(certidao.id);
 
-    this.certidaoForm.controls['tempo'].setValue(certidao.tempo);
-    this.certidaoForm.controls['token'].setValue(certidao.token);
-    this.certidaoForm.controls['sys_ident'].setValue(certidao.sys_ident);
-    this.certidaoForm.controls['observacao'].setValue(certidao.observacao);
+          this.certidaoForm.controls['datahoraemissao'].setValue(certidao.datahoraemissao);
+          this.certidaoForm.controls['datavalidade'].setValue(certidao.datavalidade.toLocaleString());
+          this.certidaoForm.controls['cnpj'].setValue(certidao.cnpj);
+          this.certidaoForm.controls['cstat'].setValue(certidao.cstat);
+
+          this.certidaoForm.controls['tempo'].setValue(certidao.tempo);
+          this.certidaoForm.controls['token'].setValue(certidao.token);
+          this.certidaoForm.controls['sys_ident'].setValue(certidao.sys_ident);
+          this.certidaoForm.controls['observacao'].setValue(certidao.observacao);
+
+          document.getElementById("openModalButton")?.click();
+    });
+
 
 
   }

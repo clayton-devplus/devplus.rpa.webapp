@@ -1,4 +1,5 @@
 <dev-certidoes-status #certidaoForm></dev-certidoes-status>
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#certidoesStatusModal">Open Modal</button>
 <div class="container-fluid col-10">
   <div class="card rounded shadow-lg" >
 
@@ -45,7 +46,7 @@
           </thead>
           <tbody>
             <tr class="align-middle bs-callout bs-callout-warning" *ngFor="let e of certidoes">
-              <th scope="row"><span (click)="certidaoForm.editCertidao(e)" data-toggle="modal" data-target="#certidoesStatusModal"><b>#{{e.id}}</b></span></th>
+              <th scope="row"><span (click)="certidaoForm.editCertidao(e)"><b>#{{e.id}}</b></span></th>
               <td >
                 <span *ngIf= "e.obrigacao == '000103'"class="badge badge-info">Federal</span>
                 <span *ngIf= "e.obrigacao == '000104'"class="badge badge-info">FGTS</span>

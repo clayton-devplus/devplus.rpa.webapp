@@ -14,5 +14,8 @@ export class CertidoesService {
         return this.http.get<Certidao[]>(API + '/ConsultaCnd');
 
     }
+    getDocument(id: number) { 
+        return this.http.get<Text>(API + '/ConsultaCnd/Document/' + id);
+    }
 
 }
