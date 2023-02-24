@@ -29,7 +29,7 @@ import { SmartComponent } from "./smart.component";
       EmpresaModule,
       CertidoesModule,
       GinfesModule,
-      GissModule
+      GissModule,
     ]
 })
 export class SmartModule { }

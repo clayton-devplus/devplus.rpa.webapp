@@ -39,7 +39,7 @@
               <th scope="col">CNPJ</th>
               <th scope="col">STAUS&nbsp;</th>
               <th scope="col">OBS&nbsp;</th>
-              <th scope="col">TOKEN/RPA</th>
+              <!-- <th scope="col">TOKEN/RPA</th> -->
               <!-- <th scope="col"></th> -->
             </tr>
           </thead>
@@ -54,17 +54,17 @@
                 <span *ngIf= "e.obrigacao == '000107'"class="badge badge-info">R.Previdência</span>
               </td>
               <td >{{e.datahoraemissao | date: 'dd/MM/yyyy'}}</td>
-              <td >{{e.cnpj}}</td>
+              <td >{{e.cnpj | CPFCNPJ}}</td>
               <td *ngIf= "e.cstat == '100'" class="font-italic"><span class="badge badge-success">Emitida</span></td>
               <td *ngIf= "e.cstat == '102'" class="font-italic"><span class="badge badge-danger">Não Matriz</span></td>
               <td *ngIf= "e.cstat == '101'" class="font-italic"><span class="badge badge-danger">Bloqueada</span></td>
               <td *ngIf= "e.cstat == '10'" class="font-italic"><span class="badge badge-warning">Processando</span></td>
               <td *ngIf= "e.cstat == '1'" class="font-italic"><span class="badge badge-warning">Solicitada</span></td>
               <td >{{e.observacao}}</td>
-              <td class="font-italic">
+              <!-- <td class="font-italic">
                 <span class="badge badge-dark">{{e.token}}</span>
                 <span class="badge badge-dark">{{e.instance_name}}</span>
-              </td>
+              </td> -->
               <!-- <td ><span class="badge badge-info"><fa-icon [icon]="faPaperclip" class="text-muted"></fa-icon>&nbsp;&nbsp;<a (click)="downloadFile(e.token + '.' + e.filetype, e.arquivo)">download</a></span></td> -->
             </tr>
 

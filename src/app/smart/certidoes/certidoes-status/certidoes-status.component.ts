@@ -1,3 +1,4 @@
+import { DatePipe } from "@angular/common";
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
@@ -30,7 +31,11 @@ export class CertidoesStatusComponent {
               datahoraemissao: [''],
               datavalidade: [''],
               cnpj: [''],
-              cstat: ['']
+              cstat: [''],
+              tempo: [''],
+              token: [''],
+              sys_ident: [''],
+              observacao: ['']
 
           });
 
@@ -53,9 +58,14 @@ export class CertidoesStatusComponent {
     this.certidaoForm.controls['id'].setValue(certidao.id);
 
     this.certidaoForm.controls['datahoraemissao'].setValue(certidao.datahoraemissao);
-    this.certidaoForm.controls['datavalidade'].setValue(certidao.datavalidade);
+    this.certidaoForm.controls['datavalidade'].setValue(certidao.datavalidade.toLocaleString());
     this.certidaoForm.controls['cnpj'].setValue(certidao.cnpj);
     this.certidaoForm.controls['cstat'].setValue(certidao.cstat);
+
+    this.certidaoForm.controls['tempo'].setValue(certidao.tempo);
+    this.certidaoForm.controls['token'].setValue(certidao.token);
+    this.certidaoForm.controls['sys_ident'].setValue(certidao.sys_ident);
+    this.certidaoForm.controls['observacao'].setValue(certidao.observacao);
 
 
   }

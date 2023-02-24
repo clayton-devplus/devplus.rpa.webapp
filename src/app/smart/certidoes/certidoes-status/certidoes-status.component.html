@@ -11,48 +11,55 @@
       <div class="modal-body">
 
         <form [formGroup] ="certidaoForm">
-          <div class="form-row pb-3">
-            <fa-icon [icon]="faGears" size="1x" class="align-middle text-muted"></fa-icon>
-            <span class="font-bold text-muted ml-2"><b> Geral</b></span>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-2">
-              <label for="inputID" class="font-weight-bold">ID</label>
-              <input formControlName="id" type="text" class="form-control" id="inputID" >
-            </div>
-            <div class="form-group col-md-4">
-              <label for="inputRazao" class="font-weight-bold">Emissão</label>
-              <input formControlName="datahoraemissao" type="text" class="form-control" id="inputRazao" >
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputCnpj" class="font-weight-bold">Validade</label>
-                <input formControlName="datavalidade" type="text" class="form-control" id="inputCnpj" >
-            </div>
-            <div class="form-group col-md-2">
-              <label for="inputCnpj" class="font-weight-bold">Status</label>
-              <input formControlName="cstat" type="text" class="form-control" id="inputCnpj" >
-            </div>
-          </div>
 
           <div class="form-row">
             <div class="form-group col-md-2">
               <label for="inputID" class="font-weight-bold">ID</label>
               <input formControlName="id" type="text" class="form-control" id="inputID" >
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
               <label for="inputRazao" class="font-weight-bold">Emissão</label>
               <input formControlName="datahoraemissao" type="text" class="form-control" id="inputRazao" >
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-3">
                 <label for="inputCnpj" class="font-weight-bold">Validade</label>
                 <input formControlName="datavalidade" type="text" class="form-control" id="inputCnpj" >
             </div>
-            <div class="form-group col-md-2">
-              <label for="inputCnpj" class="font-weight-bold">Status</label>
-              <input formControlName="cstat" type="text" class="form-control" id="inputCnpj" >
+            <div class="form-group col-md-4">
+              <label for="inputID" class="font-weight-bold">CNPJ</label>
+              <input formControlName="cnpj" type="text" class="form-control" id="inputID" >
             </div>
           </div>
 
+          <div class="form-row">
+            <div class="form-group col-md-1">
+              <label for="inputCnpj" class="font-weight-bold">Status</label>
+              <input formControlName="cstat" type="text" class="form-control" id="inputCnpj" >
+            </div>
+            <div class="form-group col-md-5">
+              <label for="inputRazao" class="font-weight-bold">Identificação</label>
+              <input formControlName="token" type="text" class="form-control" id="inputRazao" >
+            </div>
+            <div class="form-group col-md-5">
+                <label for="inputCnpj" class="font-weight-bold">Sistema Gerador</label>
+                <input formControlName="sys_ident" type="text" class="form-control" id="inputCnpj" >
+            </div>
+            <div class="form-group col-md-1">
+              <label for="inputCnpj" class="font-weight-bold">Tempo</label>
+              <input formControlName="tempo" type="text" class="form-control" id="inputCnpj" >
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputID" class="font-weight-bold">Obsevações</label>
+              <textarea formControlName="observacao" type="text" rows="5" class="form-control" id="inputID" ></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Reprocessar</button>
+            </div>
+          </div>
           <hr/>
           <img *ngIf="this.certidaoEdit?.filetype =='png'" class="img-fluid" [src]="this.encodedReport">
           <iframe *ngIf="this.certidaoEdit?.filetype =='pdf'" style="height: 50vh" class="embed-responsive" type="application/pdf" [src]="this.safeEncodedReport"></iframe>
