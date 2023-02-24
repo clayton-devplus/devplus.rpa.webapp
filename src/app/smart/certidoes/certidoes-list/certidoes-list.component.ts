@@ -9,14 +9,14 @@ import { CertidoesService } from "../certidoes.service";
     selector:'dev-certidoes-list',
     templateUrl: './certidoes-list.component.html'
 })
-export class CertidoesListComponent { 
+export class CertidoesListComponent {
 
     faEnvelopeOpenText = faEnvelopeOpenText;
     faSearch = faSearch;
     faEdit = faEdit;
     faPaperclip = faPaperclip;
     certidoes: Certidao[] = [];
-  
+    certidaoEdit: Certidao | null = null;
     filter: string ='';
     debounce: Subject<string> = new Subject<string>();
 
@@ -26,6 +26,7 @@ export class CertidoesListComponent {
         .subscribe(cert => this.certidoes = cert);
 
     }
+
 
     // returnStyleRow(status: string): string {
 
@@ -40,7 +41,7 @@ export class CertidoesListComponent {
     //     else
     //       return 'align-middle bs-callout bs-callout-default';
     //   }
-    
+
 
     downloadFile(name: string, data: Text)
     {
@@ -55,6 +56,6 @@ export class CertidoesListComponent {
           downloadLink.download = fileName;
           downloadLink.click();
     }
-  
+
 
 }

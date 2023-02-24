@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: rpa-webapp
-        image: gcr.io/devplus-gke/devplus/rpa.webapp:v2.3
+        image: gcr.io/devplus-gke/devplus/rpa.webapp:v2.8
         resources:
           requests:
             memory: "200Mi"

@@ -1,6 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
 import { faEdit, faEnvelopeOpenText, faPaperclip, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Subject } from "rxjs";
+import { delay, Subject } from "rxjs";
+import { Empresa } from "../../empresas/empresa";
+import { EmpresaFormComponent } from "../../empresas/empresa-form/empresa-form.component";
+import { EmpresasService } from "../../empresas/empresas.service";
 import { Ginfes } from "../ginfes";
 import { GinfesService } from "../ginfes.service";
 
@@ -8,7 +11,7 @@ import { GinfesService } from "../ginfes.service";
     selector:'dev-ginfes-list',
     templateUrl:'./ginfes-list.component.html'
 })
-export class GinfesListComponent { 
+export class GinfesListComponent {
 
 
     faEnvelopeOpenText = faEnvelopeOpenText;
@@ -16,14 +19,25 @@ export class GinfesListComponent {
     faEdit = faEdit;
     faPaperclip = faPaperclip;
     GinfesList: Ginfes[] = [];
-  
+    empresaView: Empresa | null = null;
+
     filter: string ='';
     debounce: Subject<string> = new Subject<string>();
 
-    constructor(private ginfeService: GinfesService){
+    constructor(private ginfeService: GinfesService,
+                private empresaService: EmpresasService){
 
         this.ginfeService.listGinfes()
-        .subscribe(ginfes => {this.GinfesList = ginfes; console.log()});
+        .subscribe(ginfes => {this.GinfesList = ginfes;});
+
+    }
+
+    showEmpresaByCnpj(cnpj: string) {
+        this.empresaService.getEmpresaByCnpj(cnpj)
+                          .subscribe(empresa => {
+                              this.empresaView = empresa;
+
+                          });
 
     }
 

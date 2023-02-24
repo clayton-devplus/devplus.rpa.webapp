@@ -2,8 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Ginfes } from "./ginfes";
 
-//const API = "https://rpa.devplus.com.br";
-const API = "https://localhost:7109";
+const API = "https://rpa.devplus.com.br";
+//const API = "https://localhost:7109";
 
 @Injectable({
     providedIn:'root'

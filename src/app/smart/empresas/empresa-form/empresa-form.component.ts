@@ -83,62 +83,103 @@ export class EmpresaFormComponent {
 
     }
 
-    loadViewEmpresa(empresa: Empresa) {
+    loadViewEmpresaByCnpj(cnpj: string) {
+
+      this.isEdit = false;
+
+      this.empresaService.getEmpresaByCnpj(cnpj)
+          .subscribe(empresa => {
+
+            this.empresaEdit = empresa;
+
+            this.empresaForm.reset();
+            this.empresaForm.disable();
+
+            this.empresaForm.controls['id'].setValue(empresa.id);
+            this.empresaForm.controls['razao'].setValue(empresa.razao);
+            this.empresaForm.controls['fantasia'].setValue(empresa.fantasia);
+            this.empresaForm.controls['contato'].setValue(empresa.contato);
+            this.empresaForm.controls['tel'].setValue(empresa.tel);
+            this.empresaForm.controls['cnpj'].setValue(empresa.cnpj);
+            this.empresaForm.controls['senha_ginfes'].setValue(empresa.senha_ginfes);
+            this.empresaForm.controls['usuario_ginfes'].setValue(empresa.usuario_ginfes);
+            this.empresaForm.controls['cod_ibge_mun'].setValue(empresa.cod_ibge_mun);
+            this.empresaForm.controls['smart_ginfes'].setValue(empresa.smart_ginfes);
+            this.empresaForm.controls['senha_giss'].setValue(empresa.senha_giss);
+            this.empresaForm.controls['usuario_giss'].setValue(empresa.usuario_giss);
+            this.empresaForm.controls['smart_giss'].setValue(empresa.smart_giss);
+            this.empresaForm.controls['dia_fechamento'].setValue(empresa.dia_fechamento);
+            this.empresaForm.controls['smart_cnd'].setValue(empresa.smart_cnd);
+            this.empresaForm.controls['cnd_104'].setValue(empresa.cnd_104);
+            this.empresaForm.controls['cnd_105'].setValue(empresa.cnd_105);
+            this.empresaForm.controls['cnd_106'].setValue(empresa.cnd_106);
+            this.empresaForm.controls['ecac_108'].setValue(empresa.ecac_108);
+            this.empresaForm.controls['ecac_109'].setValue(empresa.ecac_109);
+
+          });
+
+
+
+
+
+  }
+
+    loadViewEmpresa(empresa: Empresa | null) {
 
         this.isEdit = false;
 
         this.empresaForm.reset();
 
         this.empresaForm.controls['id'].disable();
-        this.empresaForm.controls['id'].setValue(empresa.id);
+        this.empresaForm.controls['id'].setValue(empresa?.id);
 
         this.empresaForm.controls['razao'].disable();
-        this.empresaForm.controls['razao'].setValue(empresa.razao);
+        this.empresaForm.controls['razao'].setValue(empresa?.razao);
 
         this.empresaForm.controls['fantasia'].disable();
-        this.empresaForm.controls['fantasia'].setValue(empresa.fantasia);
+        this.empresaForm.controls['fantasia'].setValue(empresa?.fantasia);
 
         this.empresaForm.controls['contato'].disable();
-        this.empresaForm.controls['contato'].setValue(empresa.contato);
+        this.empresaForm.controls['contato'].setValue(empresa?.contato);
 
         this.empresaForm.controls['tel'].disable();
-        this.empresaForm.controls['tel'].setValue(empresa.tel);
+        this.empresaForm.controls['tel'].setValue(empresa?.tel);
 
         this.empresaForm.controls['cnpj'].disable();
-        this.empresaForm.controls['cnpj'].setValue(empresa.cnpj);
+        this.empresaForm.controls['cnpj'].setValue(empresa?.cnpj);
 
         this.empresaForm.controls['senha_ginfes'].disable();
-        this.empresaForm.controls['senha_ginfes'].setValue(empresa.senha_ginfes);
+        this.empresaForm.controls['senha_ginfes'].setValue(empresa?.senha_ginfes);
         this.empresaForm.controls['usuario_ginfes'].disable();
-        this.empresaForm.controls['usuario_ginfes'].setValue(empresa.usuario_ginfes);
+        this.empresaForm.controls['usuario_ginfes'].setValue(empresa?.usuario_ginfes);
         this.empresaForm.controls['cod_ibge_mun'].disable();
-        this.empresaForm.controls['cod_ibge_mun'].setValue(empresa.cod_ibge_mun);
+        this.empresaForm.controls['cod_ibge_mun'].setValue(empresa?.cod_ibge_mun);
         this.empresaForm.controls['smart_ginfes'].disable();
-        this.empresaForm.controls['smart_ginfes'].setValue(empresa.smart_ginfes);
+        this.empresaForm.controls['smart_ginfes'].setValue(empresa?.smart_ginfes);
 
         this.empresaForm.controls['senha_giss'].disable();
-        this.empresaForm.controls['senha_giss'].setValue(empresa.senha_giss);
+        this.empresaForm.controls['senha_giss'].setValue(empresa?.senha_giss);
         this.empresaForm.controls['usuario_giss'].disable();
-        this.empresaForm.controls['usuario_giss'].setValue(empresa.usuario_giss);
+        this.empresaForm.controls['usuario_giss'].setValue(empresa?.usuario_giss);
         this.empresaForm.controls['smart_giss'].disable();
-        this.empresaForm.controls['smart_giss'].setValue(empresa.smart_giss);
+        this.empresaForm.controls['smart_giss'].setValue(empresa?.smart_giss);
         this.empresaForm.controls['dia_fechamento'].disable();
-        this.empresaForm.controls['dia_fechamento'].setValue(empresa.dia_fechamento);
+        this.empresaForm.controls['dia_fechamento'].setValue(empresa?.dia_fechamento);
 
         this.empresaForm.controls['smart_cnd'].disable();
-        this.empresaForm.controls['smart_cnd'].setValue(empresa.smart_cnd);
+        this.empresaForm.controls['smart_cnd'].setValue(empresa?.smart_cnd);
         this.empresaForm.controls['cnd_104'].disable();
-        this.empresaForm.controls['cnd_104'].setValue(empresa.cnd_104);
+        this.empresaForm.controls['cnd_104'].setValue(empresa?.cnd_104);
         this.empresaForm.controls['cnd_105'].disable();
-        this.empresaForm.controls['cnd_105'].setValue(empresa.cnd_105);
+        this.empresaForm.controls['cnd_105'].setValue(empresa?.cnd_105);
         this.empresaForm.controls['cnd_106'].disable();
-        this.empresaForm.controls['cnd_106'].setValue(empresa.cnd_106);
+        this.empresaForm.controls['cnd_106'].setValue(empresa?.cnd_106);
 
 
         this.empresaForm.controls['ecac_108'].disable();
-        this.empresaForm.controls['ecac_108'].setValue(empresa.ecac_108);
+        this.empresaForm.controls['ecac_108'].setValue(empresa?.ecac_108);
         this.empresaForm.controls['ecac_109'].disable();
-        this.empresaForm.controls['ecac_109'].setValue(empresa.ecac_109);
+        this.empresaForm.controls['ecac_109'].setValue(empresa?.ecac_109);
 
     }
 

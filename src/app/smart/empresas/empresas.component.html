@@ -47,7 +47,7 @@
             <tr *ngFor="let e of empresas">
               <th scope="row"><span><b>#{{e.id}}</b></span></th>
               <td (click)="empresaForm.loadViewEmpresa(e)" data-toggle="modal" data-target="#empresaFormModal"><i>{{e.fantasia}}</i></td>
-              <td (click)="empresaForm.loadViewEmpresa(e)" data-toggle="modal" data-target="#empresaFormModal">{{e.cnpj}}</td>
+              <td (click)="empresaForm.loadViewEmpresa(e)" data-toggle="modal" data-target="#empresaFormModal">{{e.cnpj | CPFCNPJ}}</td>
               <td (click)="empresaForm.loadViewEmpresa(e)" data-toggle="modal" data-target="#empresaFormModal">{{e.tel}}</td>
               <td (click)="empresaForm.loadViewEmpresa(e)" data-toggle="modal" data-target="#empresaFormModal">{{e.contato}}</td>
               <td><fa-icon (click)="empresaForm.loadEditEmpresa(e)" data-toggle="modal" data-target="#empresaFormModal" [icon]="faEdit" size="sm"></fa-icon></td>
