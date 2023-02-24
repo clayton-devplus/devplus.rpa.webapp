@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { faEdit, faEnvelopeOpenText, faPaperclip, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Subject } from "rxjs";
+import { interval, Subject, Subscription } from "rxjs";
 import { Empresa } from "../../empresas/empresa";
 import { Certidao } from "../certidoes";
 import { CertidoesService } from "../certidoes.service";
@@ -9,7 +9,7 @@ import { CertidoesService } from "../certidoes.service";
     selector:'dev-certidoes-list',
     templateUrl: './certidoes-list.component.html'
 })
-export class CertidoesListComponent {
+export class CertidoesListComponent implements OnInit, AfterViewInit, OnDestroy{
 
     faEnvelopeOpenText = faEnvelopeOpenText;
     faSearch = faSearch;
@@ -20,11 +20,23 @@ export class CertidoesListComponent {
     filter: string ='';
     debounce: Subject<string> = new Subject<string>();
 
+    intervallTimer = interval(6000);
+    subscription: Subscription | undefined;
+
     constructor(private certidaoService: CertidoesService){
 
         this.certidaoService.listCertidoes()
         .subscribe(cert => this.certidoes = cert);
 
+    }
+    ngOnDestroy(): void {
+        this.unsubscribeToData();
+    }
+    ngAfterViewInit(): void {
+        this.subscribeToData();
+    }
+    ngOnInit(): void {
+        throw new Error("Method not implemented.");
     }
 
 
@@ -57,5 +69,17 @@ export class CertidoesListComponent {
           downloadLink.click();
     }
 
+    subscribeToData(): void {
+
+        this.subscription = this.intervallTimer.subscribe(() => this.certidaoService.listCertidoes()
+        .subscribe(cert => this.certidoes = cert));
+    
+    }
+    unsubscribeToData(){
+
+    this.subscription?.unsubscribe();
+
+    }
+    
 
 }

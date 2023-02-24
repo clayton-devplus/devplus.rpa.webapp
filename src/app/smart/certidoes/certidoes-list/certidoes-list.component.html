@@ -47,21 +47,28 @@
           <tbody>
             <tr class="align-middle bs-callout bs-callout-warning" *ngFor="let e of certidoes">
               <th scope="row"><span (click)="certidaoForm.editCertidao(e)"><b>#{{e.id}}</b></span></th>
-              <td >
+              <td (click)="certidaoForm.editCertidao(e)">
                 <span *ngIf= "e.obrigacao == '000103'"class="badge badge-info">Federal</span>
                 <span *ngIf= "e.obrigacao == '000104'"class="badge badge-info">FGTS</span>
                 <span *ngIf= "e.obrigacao == '000105'"class="badge badge-info">D.Tabalhistas</span>
                 <span *ngIf= "e.obrigacao == '000106'"class="badge badge-info">Simples</span>
                 <span *ngIf= "e.obrigacao == '000107'"class="badge badge-info">R.Previdência</span>
               </td>
-              <td >{{e.datahoraemissao | date: 'dd/MM/yyyy'}}</td>
-              <td >{{e.cnpj | CPFCNPJ}}</td>
-              <td *ngIf= "e.cstat == '100'" class="font-italic"><span class="badge badge-success">Emitida</span></td>
-              <td *ngIf= "e.cstat == '102'" class="font-italic"><span class="badge badge-danger">Não Matriz</span></td>
-              <td *ngIf= "e.cstat == '101'" class="font-italic"><span class="badge badge-danger">Bloqueada</span></td>
-              <td *ngIf= "e.cstat == '10'" class="font-italic"><span class="badge badge-warning">Processando</span></td>
-              <td *ngIf= "e.cstat == '1'" class="font-italic"><span class="badge badge-warning">Solicitada</span></td>
-              <td >{{e.observacao}}</td>
+              <td (click)="certidaoForm.editCertidao(e)">{{e.datahoraemissao | date: 'dd/MM/yyyy'}}</td>
+              <td (click)="certidaoForm.editCertidao(e)">{{e.cnpj | CPFCNPJ}}</td>
+              <td (click)="certidaoForm.editCertidao(e)" *ngIf= "e.cstat == '100'" class="font-italic"><span class="badge badge-success">Emitida</span></td>
+              <td (click)="certidaoForm.editCertidao(e)" *ngIf= "e.cstat == '102'" class="font-italic"><span class="badge badge-danger">Não Matriz</span></td>
+              <td (click)="certidaoForm.editCertidao(e)" *ngIf= "e.cstat == '101'" class="font-italic"><span class="badge badge-danger">Bloqueada</span></td>
+              <td (click)="certidaoForm.editCertidao(e)" *ngIf= "e.cstat == '10'" class="font-italic">
+                <div class="spinner-border spinner-border-sm" role="status">
+                  <span></span>
+                </div>
+                <span class="">
+
+                Processando
+              </span></td>
+              <td (click)="certidaoForm.editCertidao(e)" *ngIf= "e.cstat == '1'" class="font-italic"><span class="badge badge-warning">Solicitada</span></td>
+              <td (click)="certidaoForm.editCertidao(e)" >{{e.observacao}}</td>
               <!-- <td class="font-italic">
                 <span class="badge badge-dark">{{e.token}}</span>
                 <span class="badge badge-dark">{{e.instance_name}}</span>

@@ -1,7 +1,8 @@
 import { DatePipe } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { Router } from "@angular/router";
 import { faGears, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Certidao } from "../certidoes";
 import { CertidoesService } from "../certidoes.service";
@@ -12,20 +13,24 @@ import { CertidoesService } from "../certidoes.service";
 })
 export class CertidoesStatusComponent {
 
+  @ViewChild('closeItera') closeItera!: ElementRef<HTMLButtonElement>;
+
   faUser = faUser;
   faGears = faGears;
   certidaoEdit: Certidao | null = null;
+  idEditCert: number = 0;
   certidaoForm: FormGroup;
   encodedReport: string = '';
   safeEncodedReport: SafeResourceUrl | null;
-
-  displayStyle = "none";
+  disableReproc: boolean = false;
 
   constructor (private formBuilder: FormBuilder,
                private certidaoService: CertidoesService,
-               private sanitizer: DomSanitizer) {
+               private sanitizer: DomSanitizer,
+               private router: Router) {
 
                 this.safeEncodedReport = null;
+
 
             //Construcao de formulario de empresa
     this.certidaoForm = this.formBuilder.group({
@@ -42,16 +47,23 @@ export class CertidoesStatusComponent {
           });
 
   }
-  openPopup() {
-    this.displayStyle = "block";
+  reTry(){
+
+    this.disableReproc = true;
+    this.closeItera.nativeElement.click();
+  
+    this.certidaoService.reTry(this.idEditCert).subscribe(() => {
+        this.router.navigate(['smart','certidoes']);
+    });
+
   }
-  closePopup() {
-    this.displayStyle = "none";
-  }
+
   editCertidao(certidao: Certidao) {
 
+    this.disableReproc = false;
     this.certidaoForm.reset();
     this.certidaoEdit = certidao;
+    this.idEditCert = certidao.id;
     this.encodedReport = '';
     this.safeEncodedReport = '';
     this.certidaoService.getDocument(certidao.id).subscribe(file => {

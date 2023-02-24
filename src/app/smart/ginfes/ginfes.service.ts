@@ -16,5 +16,8 @@ export class GinfesService {
         return this.http.get<Ginfes[]>(API + '/ConsultaGinfes');
 
     }
+    getDocument(id: number) { 
+        return this.http.get<Text>(API + '/ConsultaGinfes/Document/' + id);
+    }
 
 }

@@ -17,5 +17,8 @@ export class CertidoesService {
     getDocument(id: number) { 
         return this.http.get<Text>(API + '/ConsultaCnd/Document/' + id);
     }
+    reTry(id: number) { 
+        return this.http.get(API + '/ConsultaCnd/Retry/' + id);
+    }
 
 }

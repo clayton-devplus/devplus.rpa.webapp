@@ -54,7 +54,12 @@
                 <!-- <td class="font-italic">
                   <span class="badge badge-dark">{{e.token}}</span>
                 </td> -->
-                <td ><span class="badge badge-info"><fa-icon [icon]="faPaperclip" class="text-muted" ></fa-icon>&nbsp;&nbsp;<a (click)="downloadFile(e.token + '.' + e.filetype, e.arquivo)">download</a></span></td>
+                <td >
+                  <span class="badge badge-info">
+                    <fa-icon [icon]="faPaperclip" class="text-muted" ></fa-icon>
+                    &nbsp;&nbsp;<a (click)="downloadFile(e.token + '.' + e.filetype, e.id)">download</a>
+                  </span>
+                </td>
               </tr>
             </tbody>
           </table>

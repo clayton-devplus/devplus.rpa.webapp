@@ -41,18 +41,23 @@ export class GinfesListComponent {
 
     }
 
-    downloadFile(name: string, data: string)
+    downloadFile(name: string, id: number)
     {
 
-        console.log(data);
-          const linkSource = 'data:application/octet-stream;base64,' + data;
-          //const linkSource = data;
-          const downloadLink = document.createElement("a");
-          const fileName = name;
+        this.ginfeService.getDocument(id).subscribe(file =>{
 
-          downloadLink.href = linkSource;
-          downloadLink.download = fileName;
-          downloadLink.click();
+            const linkSource = 'data:application/octet-stream;base64,' + file;
+            const downloadLink = document.createElement("a");
+            const fileName = name;
+  
+            downloadLink.href = linkSource;
+            downloadLink.download = fileName;
+            downloadLink.click();
+
+        });
+
+
+
     }
 
 
