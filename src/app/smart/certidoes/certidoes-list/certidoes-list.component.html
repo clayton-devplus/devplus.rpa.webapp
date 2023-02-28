@@ -42,8 +42,8 @@
               <th scope="col">CERTIDÃO</th>
               <th scope="col">EMISSÃO</th>
               <th scope="col">CNPJ</th>
-              <th scope="col">STAUS&nbsp;</th>
               <th scope="col">OBS&nbsp;</th>
+              <th scope="col">STATUS&nbsp;</th>
               <!-- <th scope="col">TOKEN/RPA</th> -->
               <!-- <th scope="col"></th> -->
             </tr>
@@ -60,6 +60,7 @@
               </td>
               <td (click)="certidaoForm.editCertidao(e)">{{e.datahoraemissao | date: 'dd/MM/yyyy'}}</td>
               <td (click)="certidaoForm.editCertidao(e)">{{e.cnpj | CPFCNPJ}}</td>
+              <td (click)="certidaoForm.editCertidao(e)" >{{e.observacao}}</td>
               <td (click)="certidaoForm.editCertidao(e)" *ngIf= "e.cstat == '100'" class="font-italic"><span class="badge badge-success">Emitida</span></td>
               <td (click)="certidaoForm.editCertidao(e)" *ngIf= "e.cstat == '102'" class="font-italic"><span class="badge badge-danger">Não Matriz</span></td>
               <td (click)="certidaoForm.editCertidao(e)" *ngIf= "e.cstat == '101'" class="font-italic"><span class="badge badge-danger">Bloqueada</span></td>
@@ -72,7 +73,7 @@
                 Processando
               </span></td>
               <td (click)="certidaoForm.editCertidao(e)" *ngIf= "e.cstat == '1'" class="font-italic"><span class="badge badge-warning">Solicitada</span></td>
-              <td (click)="certidaoForm.editCertidao(e)" >{{e.observacao}}</td>
+              
               <!-- <td class="font-italic">
                 <span class="badge badge-dark">{{e.token}}</span>
                 <span class="badge badge-dark">{{e.instance_name}}</span>

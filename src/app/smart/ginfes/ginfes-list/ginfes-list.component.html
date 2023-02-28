@@ -30,11 +30,11 @@
                 <th scope="col">#ID</th>
                 <th scope="col">COMPET.</th>
                 <th scope="col">CNPJ</th>
-                <th scope="col">STAUS&nbsp;</th>
                 <th scope="col">OBS&nbsp;</th>
                 <th scope="col">TEMPO&nbsp;</th>
                 <!-- <th scope="col">TOKEN/RPA</th> -->
                 <th scope="col"></th>
+                <th scope="col">STATUS&nbsp;</th>
               </tr>
             </thead>
             <tbody>
@@ -42,12 +42,6 @@
                 <th scope="row"><span><b>#{{e.id}}</b></span></th>
                 <td >{{e.diacompetencia}}</td>
                 <td (click)="empresaForm.loadViewEmpresaByCnpj(e.cnpj)" data-toggle="modal" data-target="#empresaFormModal">{{e.cnpj | CPFCNPJ}}</td>
-                <td *ngIf= "e.cstat == '999'" class="font-italic"><span class="badge badge-danger">Não Implementada</span></td>
-                <td *ngIf= "e.cstat == '998'" class="font-italic"><span class="badge badge-danger">Sem Cód Mun.</span></td>
-                <td *ngIf= "e.cstat == '997'" class="font-italic"><span class="badge badge-danger">URL Indisponível</span></td>
-                <td *ngIf= "e.cstat == '100'" class="font-italic"><span class="badge badge-success">Processada</span></td>
-                <td *ngIf= "e.cstat == '101'" class="font-italic"><span class="badge badge-danger">Usuário/Senha Incorretos</span></td>
-                <td *ngIf= "e.cstat == '10'" class="font-italic"><span class="badge badge-warning">Processando</span></td>
                 <td *ngIf= "e.cstat == '1'" class="font-italic"><span class="badge badge-secondary">Solicitada</span></td>
                 <td >{{e.observacao}}</td>
                 <td >{{e.tempo}}/s</td>
@@ -55,11 +49,24 @@
                   <span class="badge badge-dark">{{e.token}}</span>
                 </td> -->
                 <td >
-                  <span class="badge badge-info">
+                  <span (click)="downloadFile(e.token + '.' + e.filetype, e.id)" class="badge badge-info">
                     <fa-icon [icon]="faPaperclip" class="text-muted" ></fa-icon>
-                    &nbsp;&nbsp;<a (click)="downloadFile(e.token + '.' + e.filetype, e.id)">download</a>
+                    &nbsp;&nbsp;<a>download</a>
                   </span>
                 </td>
+                <td *ngIf= "e.cstat == '999'" class="font-italic"><span class="badge badge-danger">Não Implementada</span></td>
+                <td *ngIf= "e.cstat == '998'" class="font-italic"><span class="badge badge-danger">Sem Cód Mun.</span></td>
+                <td *ngIf= "e.cstat == '997'" class="font-italic"><span class="badge badge-danger">URL Indisponível</span></td>
+                <td *ngIf= "e.cstat == '100'" class="font-italic"><span class="badge badge-success">Processada</span></td>
+                <td *ngIf= "e.cstat == '101'" class="font-italic"><span class="badge badge-danger">Usuário/Senha Incorretos</span></td>
+                <td *ngIf= "e.cstat == '10'" class="font-italic">
+                    <div class="spinner-border spinner-border-sm" role="status">
+                      <span></span>
+                    </div>
+                    <span class="">
+    
+                    Processando
+                  </span></td>
               </tr>
             </tbody>
           </table>

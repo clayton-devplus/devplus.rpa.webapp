@@ -13,14 +13,14 @@
         <hr>
         <!-- <p class="mb-0">...</p> -->
       </div>
-      <p class="lead"><fa-icon class="text-muted" [icon]="faFire"></fa-icon>&nbsp; Status de Processamento.</p>
+      <p class="lead"><fa-icon class="text-muted" [icon]="faFire"></fa-icon>&nbsp; Status de Processamento da compeetência atual.</p>
 
       <div class="row">
-        <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">
-          <div class="card-header">CNDs</div>
+        <div class="card bg-light mb-3 ml-3 shadow" style="max-width: 18rem;">
+          <div class="card-header font-weight-bold">Certidões Diversas</div>
           <div class="card-body">
-            <h5 class="card-title">Processos realizados</h5>
-            <p *ngFor="let d of cndStatus" class="card-text">{{d.descricao}} ({{d.cstat}}) - {{d.total}}</p>
+            
+            <p *ngFor="let d of cndStatus" class="card-text" [ngClass]="d.cstat !='100' ? 'text-danger' : 'text-success'">{{d.descricao}} - {{d.total}}</p>
           </div>
         </div>
         <!-- <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">
@@ -37,11 +37,11 @@
             
           </div>
         </div> -->
-        <div class="card bg-light mb-3 ml-3" style="max-width: 17rem;">
-          <div class="card-header">GINFES Diário</div>
+        <div class="card bg-light mb-3 ml-3 shadow" style="max-width: 17rem;">
+          <div class="card-header font-weight-bold">GINFES Diário</div>
           <div class="card-body">
-            <h5 class="card-title">Processos realizados</h5>
-            <p *ngFor="let g of ginfesStatus" class="card-text">{{g.descricao}} ({{g.cstat}}) - {{g.total}}</p>
+           
+            <p *ngFor="let g of ginfesStatus" class="card-text" [ngClass]="g.cstat !='100' ? 'text-danger' : 'text-success'">{{g.descricao}} - {{g.total}}</p>
           </div>
         </div>
         <!-- <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">

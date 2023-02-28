@@ -36,7 +36,7 @@ export class CertidoesListComponent implements OnInit, AfterViewInit, OnDestroy{
         this.subscribeToData();
     }
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
+       
     }
 
 
