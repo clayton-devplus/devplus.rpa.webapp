@@ -13,35 +13,37 @@
         <hr>
         <!-- <p class="mb-0">...</p> -->
       </div>
-      <p class="lead"><fa-icon class="text-muted" [icon]="faFire"></fa-icon>&nbsp; Status de Processamento da compeetência atual.</p>
+      <p class="lead"><fa-icon class="text-muted" [icon]="faFire"></fa-icon>&nbsp; Status de Processamento da competência atual.</p>
 
       <div class="row">
         <div class="card bg-light mb-3 ml-3 shadow" style="max-width: 18rem;">
-          <div class="card-header font-weight-bold">Certidões Diversas</div>
+          <div class="card-header font-weight-bold">
+            <fa-icon [icon]="faListAlt" class="mr-2"></fa-icon>Certidões Diversas
+          </div>
           <div class="card-body">
-            
-            <p *ngFor="let d of cndStatus" class="card-text" [ngClass]="d.cstat !='100' ? 'text-danger' : 'text-success'">{{d.descricao}} - {{d.total}}</p>
+            <div class="list-group">
+              <a *ngFor="let d of cndStatus" class="list-group-item list-group-item-action" [ngClass]="d.cstat !='100' ? 'text-danger' : 'text-success'">
+                <fa-icon *ngIf="d.cstat == '100'" [icon]="faCheckCircle" class="mr-2"></fa-icon>
+                <fa-icon *ngIf="d.cstat != '100'" [icon]="faExclamationCircle" class="mr-2"></fa-icon>
+                {{d.descricao}} - {{d.total}}
+              </a>
+            </div>           
           </div>
         </div>
-        <!-- <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">
-          <div class="card-header">GINFES Diário</div>
-          <div class="card-body">
-            <h5 class="card-title">Light card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-        <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">
-          <div class="card-header">CNDs</div>
-          <div class="card-body">
-            <h5 class="card-title">Light card title</h5>
-            
-          </div>
-        </div> -->
         <div class="card bg-light mb-3 ml-3 shadow" style="max-width: 17rem;">
-          <div class="card-header font-weight-bold">GINFES Diário</div>
+          <div class="card-header font-weight-bold">
+            <fa-icon [icon]="faListAlt" class="mr-2"></fa-icon>GINFES Diário
+          </div>
           <div class="card-body">
-           
-            <p *ngFor="let g of ginfesStatus" class="card-text" [ngClass]="g.cstat !='100' ? 'text-danger' : 'text-success'">{{g.descricao}} - {{g.total}}</p>
+            <div class="list-group">
+              <a *ngFor="let g of ginfesStatus" class="list-group-item list-group-item-action" [ngClass]="g.cstat !='100' ? 'text-danger' : 'text-success'">
+                <fa-icon *ngIf="g.cstat == '100'" [icon]="faCheckCircle" class="mr-2"></fa-icon>
+                <fa-icon *ngIf="g.cstat != '100'" [icon]="faExclamationCircle" class="mr-2"></fa-icon>
+                {{g.descricao}} - {{g.total}}
+              </a>
+
+            </div>
+          
           </div>
         </div>
         <!-- <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">
@@ -53,7 +55,7 @@
         </div> -->
 
       </div>
-
+      <hr>
 
   </div>
 

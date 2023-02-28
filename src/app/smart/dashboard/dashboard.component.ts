@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { faFire } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faExclamationCircle, faFire, faListAlt } from "@fortawesome/free-solid-svg-icons";
 import { Observable } from "rxjs";
 import { User } from "src/app/core/user/user";
 import { UserService } from "src/app/core/user/user.service";
@@ -15,7 +15,10 @@ export class DashboardComponent implements OnInit {
   cndStatus: ServiceStatus[] = [];
   ginfesStatus: ServiceStatus[] = [];
 
-  faFire = faFire
+  faFire = faFire;
+  faListAlt = faListAlt;
+  faCheckCircle = faCheckCircle;
+  faExclamationCircle = faExclamationCircle;
   user$: Observable<User | null>;
   userInfo: User | null = null;
 
