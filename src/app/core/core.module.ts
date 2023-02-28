@@ -10,10 +10,19 @@ import { HeaderModule } from "./header/header.module";
 import { MenuComponent } from "./menu/menu.component";
 import { MenuModule } from "./menu/menu.module";
 import { CPFCNPJPipe } from "./pipes/cnpjcpf.pipe";
+import { PopupComponent } from "./popup/popup.component";
 
 @NgModule({
-    declarations: [CPFCNPJPipe],
-    exports: [MenuComponent, HeaderComponent, CPFCNPJPipe],
+    declarations: [
+      CPFCNPJPipe,
+      PopupComponent
+    ],
+    exports: [
+      MenuComponent, 
+      HeaderComponent, 
+      CPFCNPJPipe,
+      PopupComponent
+    ],
     imports: [
       CommonModule,
       MenuModule,

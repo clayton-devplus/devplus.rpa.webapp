@@ -90,6 +90,27 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <button type="button" (click)="reTry()" data-dismiss="modal" class="btn btn-danger">Reprocessar Solicitação</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Confirma Proc-->
+<div class="modal fade" id="devPopup" tabindex="-1" role="dialog" aria-labelledby="devPopup" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <fa-icon [icon]="faRunning" size="lg" class="mr-2"></fa-icon><h5 class="modal-title" id="devPopup">{{Title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{Message}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>
       </div>
     </div>
   </div>
@@ -98,4 +119,5 @@
 
 <!-- Auxiliares modais -->
 <span #showConfirma hidden="true" data-dismiss="modal" data-toggle="modal" data-target="#confirmaProcModal">OK</span>
+<button [hidden]="true" id="devPopupButton" data-dismiss="modal" data-toggle="modal" data-target="#devPopup">Open Modal</button>
 

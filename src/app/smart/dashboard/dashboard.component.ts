@@ -4,9 +4,7 @@ import { Observable } from "rxjs";
 import { User } from "src/app/core/user/user";
 import { UserService } from "src/app/core/user/user.service";
 import { DashboardService } from "./dashboard.service";
-import { Cnd } from "./models/cnd";
-
-
+import { ServiceStatus } from "./models/service-status";
 
 @Component({
   selector: 'dev-dashboard',
@@ -14,7 +12,9 @@ import { Cnd } from "./models/cnd";
 })
 export class DashboardComponent implements OnInit {
 
-  cndStatus: Cnd[] = [];
+  cndStatus: ServiceStatus[] = [];
+  ginfesStatus: ServiceStatus[] = [];
+
   faFire = faFire
   user$: Observable<User | null>;
   userInfo: User | null = null;
@@ -27,9 +27,15 @@ export class DashboardComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    
     this.dashboardService.statusCnd().subscribe( ss => {
         this.cndStatus = ss;
     });
+
+    this.dashboardService.statusGinfes().subscribe( ss => {
+      this.ginfesStatus = ss;
+  });
+
   }
 
 

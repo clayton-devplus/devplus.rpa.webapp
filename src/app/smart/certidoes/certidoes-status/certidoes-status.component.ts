@@ -3,7 +3,8 @@ import { Component, ElementRef, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { Router } from "@angular/router";
-import { faGears, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faGears, faRunning, faUser } from "@fortawesome/free-solid-svg-icons";
+import { PopupComponent } from "src/app/core/popup/popup.component";
 import { Certidao } from "../certidoes";
 import { CertidoesService } from "../certidoes.service";
 
@@ -14,15 +15,20 @@ import { CertidoesService } from "../certidoes.service";
 export class CertidoesStatusComponent {
 
   @ViewChild('closeItera') closeItera!: ElementRef<HTMLButtonElement>;
+  @ViewChild('devPopupButton') devPopup!: ElementRef;
 
   faUser = faUser;
   faGears = faGears;
+  faRunning = faRunning
   certidaoEdit: Certidao | null = null;
   idEditCert: number = 0;
   certidaoForm: FormGroup;
   encodedReport: string = '';
   safeEncodedReport: SafeResourceUrl | null;
   disableReproc: boolean = false;
+
+  Title: string = '';
+  Message: string = '';
 
   constructor (private formBuilder: FormBuilder,
                private certidaoService: CertidoesService,
@@ -60,6 +66,22 @@ export class CertidoesStatusComponent {
 
   editCertidao(certidao: Certidao) {
 
+
+    if(certidao.cstat == '1' || certidao.cstat == '10')
+    {
+      console.log(this.devPopup?.nativeElement);
+      //(document.getElementById("devp") as any)?.showMessage('dsdas', 'dasdasd');
+      
+      this.Title ="Em Processamento..";
+      this.Message ="Aguarde a conculsão do processamento da solicitação...\n ";
+
+      if(certidao.cstat == '10')
+        this.Message += "RPA Operator: " + certidao.instance_name;
+
+      document.getElementById("devPopupButton")?.click();
+      return
+    }
+
     this.disableReproc = false;
     this.certidaoForm.reset();
     this.certidaoEdit = certidao;
@@ -69,6 +91,7 @@ export class CertidoesStatusComponent {
     this.certidaoService.getDocument(certidao.id).subscribe(file => {
 
           certidao.arquivo = file;
+
           if(certidao.filetype == 'png')
             this.encodedReport = 'data:image/png;base64,' + certidao.arquivo;
           else

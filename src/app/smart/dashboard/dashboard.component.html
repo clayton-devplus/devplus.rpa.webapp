@@ -11,35 +11,50 @@
         <h4 class="alert-heading">Tudo Certo!</h4>
         <p>Todos os serviços do SmartContábil estão funcionando corretamente. Alertas de instabilidade de serviços aparecerão nessa página.</p>
         <hr>
-        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+        <!-- <p class="mb-0">...</p> -->
       </div>
       <p class="lead"><fa-icon class="text-muted" [icon]="faFire"></fa-icon>&nbsp; Status de Processamento.</p>
-      <ul *ngFor="let d of cndStatus" class="list-group list-group-flush">
-        <li class="list-group-item list-group-item-danger"><span class="badge badge-secondary align-middle shadow">#{{d.total}}</span>&nbsp; - {{d.status}}</li>
-      </ul>
 
-      <div class="card p1">
-
-        <div class="card-body">
-          <h5 class="card-title">Processamento CNDs</h5>
-          <table class="table table-hover border p1">
-            <thead>
-              <tr>
-
-                <th scope="col">Status</th>
-                <th scope="col">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let cnd of cndStatus; index as i">
-
-                <td>{{ cnd.status }}</td>
-                <td>{{ cnd.total | number }}</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="row">
+        <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">
+          <div class="card-header">CNDs</div>
+          <div class="card-body">
+            <h5 class="card-title">Processos realizados</h5>
+            <p *ngFor="let d of cndStatus" class="card-text">{{d.descricao}} ({{d.cstat}}) - {{d.total}}</p>
+          </div>
         </div>
+        <!-- <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">
+          <div class="card-header">GINFES Diário</div>
+          <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+        <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">
+          <div class="card-header">CNDs</div>
+          <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            
+          </div>
+        </div> -->
+        <div class="card bg-light mb-3 ml-3" style="max-width: 17rem;">
+          <div class="card-header">GINFES Diário</div>
+          <div class="card-body">
+            <h5 class="card-title">Processos realizados</h5>
+            <p *ngFor="let g of ginfesStatus" class="card-text">{{g.descricao}} ({{g.cstat}}) - {{g.total}}</p>
+          </div>
+        </div>
+        <!-- <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">
+          <div class="card-header">GINFES Diário</div>
+          <div class="card-body">
+            <h5 class="card-title">Light card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div> -->
+
       </div>
+
+
   </div>
 
 </div>
