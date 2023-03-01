@@ -1,4 +1,9 @@
 <dev-empresa-form #empresaForm></dev-empresa-form>
+<dev-ginfes-status #ginfesForm></dev-ginfes-status>
+
+
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#ginfesStatusModal">Open Modal</button>
+
 <div class="container-fluid col-10">
     <div class="card rounded shadow-lg" >
       <div class="card-header">
@@ -29,6 +34,7 @@
               <tr>
                 <th scope="col">#ID</th>
                 <th scope="col">COMPET.</th>
+                <th scope="col">EMISSÄO</th>
                 <th scope="col">CNPJ</th>
                 <th scope="col">OBS&nbsp;</th>
                 <th scope="col">TEMPO&nbsp;</th>
@@ -41,9 +47,10 @@
               <tr class="align-middle bs-callout bs-callout-warning" *ngFor="let e of GinfesList">
                 <th scope="row"><span><b>#{{e.id}}</b></span></th>
                 <td >{{e.diacompetencia}}</td>
+                <td >{{e.datahoraemissao | date: 'dd/MM/yyyy'}}</td>
                 <td (click)="empresaForm.loadViewEmpresaByCnpj(e.cnpj)" data-toggle="modal" data-target="#empresaFormModal">{{e.cnpj | CPFCNPJ}}</td>
                 <td *ngIf= "e.cstat == '1'" class="font-italic"><span class="badge badge-secondary">Solicitada</span></td>
-                <td >{{e.observacao}}</td>
+                <td (click)="ginfesForm.editGinfes(e)">{{e.observacao}}</td>
                 <td >{{e.tempo}}/s</td>
                 <!-- <td class="font-italic">
                   <span class="badge badge-dark">{{e.token}}</span>
@@ -64,7 +71,7 @@
                       <span></span>
                     </div>
                     <span class="">
-    
+
                     Processando
                   </span></td>
               </tr>

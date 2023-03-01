@@ -1,0 +1,125 @@
+<!-- Modal -->
+<div class="modal fade" id="ginfesStatusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Resumo de Processamento GINFES - ({{ginfesEdit?.cstat}})</h5>
+        <button #closeItera id="closeItera" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup] ="ginfesForm">
+
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="inputID" class="font-weight-bold">ID</label>
+              <input formControlName="id" type="text" class="form-control" id="inputID" >
+            </div>
+            <div class="form-group col-md-3">
+              <label for="inputRazao" class="font-weight-bold">Emissão</label>
+              <input formControlName="datahoraemissao" type="text" class="form-control" id="inputRazao" >
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputCnpj" class="font-weight-bold">Validade</label>
+                <input formControlName="datavalidade" type="text" class="form-control" id="inputCnpj" >
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputID" class="font-weight-bold">CNPJ</label>
+              <input formControlName="cnpj" type="text" class="form-control" id="inputID" >
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-1">
+              <label for="inputCnpj" class="font-weight-bold">Status</label>
+              <input formControlName="cstat" type="text" class="form-control" id="inputCnpj" >
+            </div>
+            <div class="form-group col-md-5">
+              <label for="inputRazao" class="font-weight-bold">Identificação</label>
+              <input formControlName="token" type="text" class="form-control" id="inputRazao" >
+            </div>
+            <div class="form-group col-md-5">
+                <label for="inputCnpj" class="font-weight-bold">Sistema Gerador</label>
+                <input formControlName="sys_ident" type="text" class="form-control" id="inputCnpj" >
+            </div>
+            <div class="form-group col-md-1">
+              <label for="inputCnpj" class="font-weight-bold">Tempo</label>
+              <input formControlName="tempo" type="text" class="form-control" id="inputCnpj" >
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputID" class="font-weight-bold">Observações</label>
+              <textarea formControlName="observacao" type="text" rows="5" class="form-control" id="inputID" ></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <button [disabled]="disableReproc" type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmaProcModal">Reprocessar</button>
+            </div>
+          </div>
+
+          <hr/>
+
+          <textarea *ngIf="this.ginfesEdit?.filetype =='xml'" class="form-control" rows="15" disabled="true">{{this.encodedReport}}</textarea>
+          <img *ngIf="this.ginfesEdit?.filetype =='png'" class="img-fluid" [src]="this.encodedReport">
+          <iframe *ngIf="this.ginfesEdit?.filetype =='pdf'" style="height: 50vh" class="embed-responsive" type="application/pdf" [src]="this.safeEncodedReport"></iframe>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Confirma Proc-->
+<div class="modal fade" id="confirmaProcModal" tabindex="-1" role="dialog" aria-labelledby="confirmaProclLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmaProclLabel">Reprocessar Solicitação</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Você confirma o reprocessamento dessa solicitação?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" (click)="reTry()" data-dismiss="modal" class="btn btn-danger">Reprocessar Solicitação</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Confirma Proc-->
+<div class="modal fade" id="devPopup" tabindex="-1" role="dialog" aria-labelledby="devPopup" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <fa-icon [icon]="faRunning" size="lg" class="mr-2"></fa-icon><h5 class="modal-title" id="devPopup">{{Title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{Message}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-primary">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Auxiliares modais -->
+<span #showConfirma hidden="true" data-dismiss="modal" data-toggle="modal" data-target="#confirmaProcModal">OK</span>
+<button [hidden]="true" id="devPopupButton" data-dismiss="modal" data-toggle="modal" data-target="#devPopup">Open Modal</button>
+
