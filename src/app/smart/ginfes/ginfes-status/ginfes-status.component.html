@@ -76,27 +76,8 @@
   </div>
 </div>
 
-<!-- Modal Confirma Proc-->
-<div class="modal fade" id="confirmaProcModal" tabindex="-1" role="dialog" aria-labelledby="confirmaProclLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="confirmaProclLabel">Reprocessar Solicitação</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Você confirma o reprocessamento dessa solicitação?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" (click)="reTry()" data-dismiss="modal" class="btn btn-danger">Reprocessar Solicitação</button>
+<dev-ginfes-reproc [ginfesReproc]= "this.ginfesEdit" #ginfesReproc></dev-ginfes-reproc>
 
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Modal Confirma Proc-->
 <div class="modal fade" id="devPopup" tabindex="-1" role="dialog" aria-labelledby="devPopup" aria-hidden="true">

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { faGears, faRunning, faUser } from "@fortawesome/free-solid-svg-icons";
+import { Pulse } from "src/app/core/proc/pulse";
+import { PulseService } from "src/app/core/proc/pulse.service";
 import { Ginfes } from "../ginfes";
 import { GinfesService } from "../ginfes.service";
 
@@ -19,8 +21,11 @@ export class GinfesStatusComponent {
   faUser = faUser;
   faGears = faGears;
   faRunning = faRunning
+
   ginfesEdit: Ginfes | null = null;
   idEditCert: number = 0;
+  activeInstances!: Pulse;
+
   ginfesForm: FormGroup;
   encodedReport: string = '';
   safeEncodedReport: SafeResourceUrl | null;
@@ -32,6 +37,7 @@ export class GinfesStatusComponent {
 
   constructor (private formBuilder: FormBuilder,
     private ginfesService: GinfesService,
+    private pulseService: PulseService,
     private sanitizer: DomSanitizer,
     private router: Router) {
 
@@ -53,19 +59,10 @@ export class GinfesStatusComponent {
       });
 
   }
-  reTry(){
 
-    this.disableReproc = true;
-    //this.closeItera.nativeElement.click();
-    console.log(this.idEditCert);
-    this.ginfesService.reTry(this.idEditCert).subscribe(() => {
-        this.router.navigate(['smart','ginfes']);
-    });
-
-  }
   editGinfes(ginfes: Ginfes) {
 
-
+    //Impedir a edição e abrir popup
     if(ginfes.cstat == '1' || ginfes.cstat == '10')
     {
       console.log(this.devPopup?.nativeElement);
@@ -91,6 +88,7 @@ export class GinfesStatusComponent {
 
       ginfes.arquivo = file;
 
+      
           if(ginfes.filetype == 'png')
             this.encodedReport = 'data:image/png;base64,' + ginfes.arquivo;
           else if(ginfes.filetype == 'xml')
