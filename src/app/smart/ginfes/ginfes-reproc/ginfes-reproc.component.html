@@ -8,9 +8,36 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          Você confirma o reprocessamento dessa solicitação?
-        </div>
+
+        <form [formGroup]="reprocForm">
+
+          <div class="modal-body">
+            Você confirma o reprocessamento dessa solicitação?
+  
+            <hr/>
+            <div class="form-group">
+              <div class="form-check">
+                <input (change)="onCheck()" formControlName="proc_avancado" class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="proc_avancado">
+                  Reprocessamento Avançado
+                </label>
+              </div>
+            </div>
+            <div [hidden]="!avancadoCheck" class="form-row">
+              <div class="form-group col-md-10">
+                <label class="font-weight-bold" for="inputState">Operador RPA GINFES</label>
+                <select formControlName="instance_name" id="instance_name" class="form-control">
+                  <optgroup label="Operadores on-line">
+                  <option *ngFor="let ginfesOperator of ginfesOperators; let i = index" [value]="ginfesOperators[i].id">
+                    {{ginfesOperators[i].instance_name}}
+                  </option>
+                </optgroup>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           <button type="button" (click)="reTry()" data-dismiss="modal" class="btn btn-danger">Reprocessar Solicitação</button>
