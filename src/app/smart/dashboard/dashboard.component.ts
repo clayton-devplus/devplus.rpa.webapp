@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit {
 
   cndStatus: ServiceStatus[] = [];
   ginfesStatus: ServiceStatus[] = [];
+  gissStatus: ServiceStatus[] = [];
+
 
   faFire = faFire;
   faListAlt = faListAlt;
@@ -37,7 +39,11 @@ export class DashboardComponent implements OnInit {
 
     this.dashboardService.statusGinfes().subscribe( ss => {
       this.ginfesStatus = ss;
-  });
+    });
+
+    this.dashboardService.statusGiss().subscribe( ss => {
+      this.gissStatus = ss;
+    });
 
   }
 

@@ -5,9 +5,16 @@ import { GissListComponent } from "./giss-list/giss-list.component";
 
 @NgModule({
 
-    declarations:[GissListComponent],
-    exports:[GissListComponent],
-    imports:[CommonModule,FontAwesomeModule]
+    declarations:[
+        GissListComponent
+    ],
+    exports:[
+        GissListComponent
+    ],
+    imports:[
+        CommonModule,
+        FontAwesomeModule
+    ]
     
 })
 export class GissModule { }

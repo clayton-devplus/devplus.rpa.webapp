@@ -30,6 +30,8 @@
             </div>           
           </div>
         </div>
+
+
         <div class="card bg-light mb-3 ml-3 shadow" style="max-width: 17rem;">
           <div class="card-header font-weight-bold">
             <fa-icon [icon]="faListAlt" class="mr-2"></fa-icon><spam [routerLink]="['ginfes']" >GINFES Diário</spam>
@@ -41,11 +43,28 @@
                 <fa-icon *ngIf="g.cstat != '100'" [icon]="faExclamationCircle" class="mr-2"></fa-icon>
                 {{g.descricao}} - {{g.total}}
               </a>
-
             </div>
-          
           </div>
         </div>
+
+        <div class="card bg-light mb-3 ml-3 shadow" style="max-width: 17rem;">
+          <div class="card-header font-weight-bold">
+            <fa-icon [icon]="faListAlt" class="mr-2"></fa-icon><spam [routerLink]="['giss']" >GISS Fechamentos</spam>
+          </div>
+          <div class="card-body">
+            <div class="list-group">
+              <a *ngFor="let g of gissStatus" class="list-group-item list-group-item-action" 
+              [ngClass]="{'text-success': g.cstat === '100', 
+                        'text-warning' : g.cstat === '10' || g.cstat === '1', 
+                        'text-danger' : g.cstat > '100'}">
+              <!-- <a *ngFor="let g of gissStatus" class="list-group-item list-group-item-action" [ngClass]="g.cstat !='100' ? 'text-danger' : 'text-success'"> -->
+                <fa-icon *ngIf="g.cstat == '100'" [icon]="faCheckCircle" class="mr-2"></fa-icon>
+                <fa-icon *ngIf="g.cstat != '100'" [icon]="faExclamationCircle" class="mr-2"></fa-icon>
+                {{g.descricao}} - {{g.total}}
+              </a>
+            </div>
+          </div>
+        </div>        
         <!-- <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;">
           <div class="card-header">GINFES Diário</div>
           <div class="card-body">

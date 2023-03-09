@@ -28,37 +28,29 @@
             <thead>
               <tr>
                 <th scope="col">#ID</th>
-                <th scope="col">CERTIDÃO.</th>
                 <th scope="col">COMPET.</th>
+                <th scope="col">EMISSÂO</th>
                 <th scope="col">CNPJ</th>
-                <th scope="col">STAUS&nbsp;</th>
                 <th scope="col">OBS&nbsp;</th>
-                <th scope="col">TOKEN/RPA</th>
-                <th scope="col"></th>
+                <th scope="col">TEMPO</th>
+                <th scope="col">STATUS</th>
               </tr>
             </thead>
             <tbody>
               <tr class="align-middle bs-callout bs-callout-warning" *ngFor="let e of GissList">
                 <th scope="row"><span><b>#{{e.id}}</b></span></th>
-                <td >
-                  <span *ngIf= "e.obrigacao == '000103'"class="badge badge-info">Federal</span>
-                  <span *ngIf= "e.obrigacao == '000104'"class="badge badge-info">FGTS</span>
-                  <span *ngIf= "e.obrigacao == '000105'"class="badge badge-info">D.Tabalhistas</span>
-                  <span *ngIf= "e.obrigacao == '000106'"class="badge badge-info">Simples</span>
-                  <span *ngIf= "e.obrigacao == '000107'"class="badge badge-info">R.Previdência</span>
-                </td>
-                <td >{{e.diacompetencia}}</td>
+                <td >{{e.competencia}}</td>
+                <td >{{e.datahoraemissao | date: 'dd/MM/yyyy'}}</td>
                 <td >{{e.cnpj}}</td>
+                <td >{{e.observacao}}</td>
+                <td >{{e.tempo}}</td>
                 <td *ngIf= "e.cstat == '100'" class="font-italic"><span class="badge badge-success">Emitida</span></td>
                 <td *ngIf= "e.cstat == '101'" class="font-italic"><span class="badge badge-danger">Bloqueada</span></td>
                 <td *ngIf= "e.cstat == '10'" class="font-italic"><span class="badge badge-warning">Processando</span></td>
                 <td *ngIf= "e.cstat == '1'" class="font-italic"><span class="badge badge-warning">Solicitada</span></td>
-                <td >{{e.observacao}}</td>
-                <td class="font-italic">
-                  <span class="badge badge-dark">{{e.token}}</span>
-                  <span class="badge badge-dark">{{e.instance_name}}</span>
-                </td>
-                <td ><span class="badge badge-info"><fa-icon [icon]="faPaperclip" class="text-muted" ></fa-icon>&nbsp;&nbsp;<a (click)="downloadFile(e.token + '.' + e.filetype, e.arquivo)">download</a></span></td>
+                <td *ngIf= "e.cstat > '101'" class="font-italic"><span class="badge badge-danger">Erro</span></td>
+                <!-- <td ><span class="badge badge-info"><fa-icon [icon]="faPaperclip" class="text-muted" ></fa-icon>&nbsp;&nbsp;<a (click)="downloadFile(e.token + '.' + e.filetype, e.arquivo)">download</a></span></td> -->
+                <!-- <td >{{e.cstat}}</td> -->
               </tr>
             </tbody>
           </table>
