@@ -2,8 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ServiceStatus } from "./models/service-status";
 
-//const API = "https://rpa.devplus.com.br"
-const API = "https://localhost:7109"
+const API = "https://rpa.devplus.com.br"
+//const API = "https://localhost:7109"
 
 @Injectable({
   providedIn:'root'
