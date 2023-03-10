@@ -1,3 +1,7 @@
+<!-- <dev-empresa-form #empresaForm></dev-empresa-form> -->
+<dev-giss-status #gissForm></dev-giss-status>
+
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#gissStatusModal">Open Modal</button>
 
 <div class="container-fluid col-10">
     <div class="card rounded shadow-lg" >
@@ -42,7 +46,7 @@
                 <td >{{e.competencia}}</td>
                 <td >{{e.datahoraemissao | date: 'dd/MM/yyyy'}}</td>
                 <td >{{e.cnpj}}</td>
-                <td >{{e.observacao}}</td>
+                <td (click)="gissForm.editGinfes(e)">{{e.observacao}}</td>
                 <td >{{e.tempo}}</td>
                 <td *ngIf= "e.cstat == '100'" class="font-italic"><span class="badge badge-success">Emitida</span></td>
                 <td *ngIf= "e.cstat == '101'" class="font-italic"><span class="badge badge-danger">Bloqueada</span></td>
