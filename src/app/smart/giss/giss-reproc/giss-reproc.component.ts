@@ -29,7 +29,7 @@ export class GissReprocComponent {
             });
             this.reprocForm.controls['proc_avancado'].setValue(false);
 
-            pulseService.listOperatorsByService(4).subscribe(
+            pulseService.listOperatorsByService(5).subscribe(
             gissOps => {
                 this.gissOperators = gissOps;
                 console.log(this.gissOperators);
