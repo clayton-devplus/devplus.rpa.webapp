@@ -19,5 +19,12 @@ export class GissService {
     getDocument(id: number) {
         return this.http.get<Text>(API + '/ConsultaGiss/Document/' + id);
     }
+    reTry(id: number) {
+        return this.http.get(API + '/ConsultaGiss/Retry/' + id);
+    }
+    advancedReTry(id: number, instance: number) {
+        console.log('intance: ' + instance);
+          return this.http.get(API + '/ConsultaGiss/Retry/' + id + '/' + instance);
+    }
 
 }

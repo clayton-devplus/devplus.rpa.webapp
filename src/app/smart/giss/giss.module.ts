@@ -3,17 +3,20 @@ import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { GissListComponent } from "./giss-list/giss-list.component";
+import { GissReprocComponent } from "./giss-reproc/giss-reproc.component";
 import { GissStatusComponent } from "./giss-status/giss-status.component";
 
 @NgModule({
 
     declarations:[
         GissListComponent, 
-        GissStatusComponent
+        GissStatusComponent,
+        GissReprocComponent
     ],
     exports:[
         GissListComponent,
-        GissStatusComponent
+        GissStatusComponent,
+        GissReprocComponent
     ],
     imports:[
         CommonModule,

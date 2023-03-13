@@ -1,0 +1,48 @@
+<!-- Modal Confirma Proc-->
+<div class="modal fade" id="confirmaProcModal" tabindex="-1" role="dialog" aria-labelledby="confirmaProclLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmaProclLabel">Reprocessar Solicitação</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form [formGroup]="reprocForm">
+
+          <div class="modal-body">
+            Você confirma o reprocessamento dessa solicitação?
+  
+            <hr/>
+            <div class="form-group">
+              <div class="form-check">
+                <input (change)="onCheck()" formControlName="proc_avancado" class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="proc_avancado">
+                  Reprocessamento Avançado
+                </label>
+              </div>
+            </div>
+            <div [hidden]="!avancadoCheck" class="form-row">
+              <div class="form-group col-md-10">
+                <label class="font-weight-bold" for="inputState">Operador RPA GISS</label>
+                <select formControlName="instance_name" id="instance_name" class="form-control">
+                  <optgroup label="Operadores on-line">
+                  <option *ngFor="let ginfesOperator of gissOperators; let i = index" [value]="gissOperators[i].id">
+                    {{gissOperators[i].instance_name}}
+                  </option>
+                </optgroup>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" (click)="reTry()" data-dismiss="modal" class="btn btn-danger">Reprocessar Solicitação</button>
+  
+        </div>
+      </div>
+    </div>
+  </div>
