@@ -1,0 +1,2 @@
+resources:
+- deploy/rpa-webapp-deployment.yaml
