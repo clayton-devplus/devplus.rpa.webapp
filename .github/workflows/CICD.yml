@@ -1,19 +1,24 @@
-name: Build and Deploy to GKE
+name: CI/CD
 on:
   push:
-    branches:
-      - main
-env:
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: rpa-cluster    # Add your cluster name here.
-  GKE_ZONE: southamerica-east1-a   # Add your cluster zone here.
-  DEPLOYMENT_NAME: rpa-webapp-deployment # Add your deployment name here.
-  IMAGE: devplus/rpa.webapp
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+      
 jobs:
+
   setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy
+    name: Setup, Docker Build, Publish, and Deploy
     runs-on: ubuntu-latest
-    #environment: production
+    environment: prd
+    
+    env:
+      PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+      GKE_CLUSTER: ${{ secrets.GKE_CLUSTER_NAME }}    # Add your cluster name here.
+      GKE_ZONE: southamerica-east1-a   # Add your cluster zone here.
+      DEPLOYMENT_NAME: rpa-webapp-deployment # Add your deployment name here.
+      IMAGE: devplus/rpa.webapp   
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v3
