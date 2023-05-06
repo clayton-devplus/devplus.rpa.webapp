@@ -1,19 +1,55 @@
-name: Build and Deploy to GKE
+name: main-ci-cd
 on:
   push:
     branches:
       - main
-env:
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: rpa-cluster    # Add your cluster name here.
-  GKE_ZONE: southamerica-east1-a   # Add your cluster zone here.
-  DEPLOYMENT_NAME: rpa-webapp-deployment # Add your deployment name here.
-  IMAGE: devplus/rpa.webapp
+
 jobs:
-  setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy
+
+  build:
+    name: Build App
     runs-on: ubuntu-latest
-    #environment: production
+    strategy:
+      matrix:
+        node-version: [17.x,18.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install and npm run build
+        run: |
+          npm install
+          npm run build
+
+  sonar:
+    needs: build
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+
+  setup-build-publish-deploy:
+    needs: build
+    name: Setup, Docker Build, Publish, and Deploy
+    runs-on: ubuntu-latest
+    environment: prd
+    
+    env:
+      PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+      GKE_CLUSTER: ${{ secrets.GKE_CLUSTER_NAME }}    # Add your cluster name here.
+      GKE_ZONE: southamerica-east1-a   # Add your cluster zone here.
+      DEPLOYMENT_NAME: rpa-webapp-deployment # Add your deployment name here.
+      IMAGE: devplus/rpa.webapp   
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v3

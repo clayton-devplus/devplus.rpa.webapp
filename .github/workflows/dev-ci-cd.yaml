@@ -1,18 +1,13 @@
-name: Build and Deploy to GKE
+name: dev-ci-cd
 on:
   push:
     branches:
       - development
-env:
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: ${{ secrets.GKE_CLUSTER_NAME }}      # Add your cluster name here.
-  GKE_ZONE: southamerica-east1-a   # Add your cluster zone here.
-  DEPLOYMENT_NAME: rpa-webapp-deployment # Add your deployment name here.
-  IMAGE: devplus/rpa.webapp
-
+      
 jobs:
 
   build:
+    name: Build App
     runs-on: ubuntu-latest
     strategy:
       matrix:
