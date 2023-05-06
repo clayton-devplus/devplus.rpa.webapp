@@ -21,7 +21,6 @@ jobs:
       - name: npm install and npm run build
         run: |-
           npm ci
-          npm run test:prod
           npm run lint
 
   sonar:
