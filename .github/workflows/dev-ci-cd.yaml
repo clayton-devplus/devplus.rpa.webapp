@@ -19,10 +19,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: npm install and npm run build
-        run: |
-            - run: npm ci
-            - run: npm run test:prod
-            - run: npm run lint
+        run: |-
+          npm ci
+          npm run test:prod
+          npm run lint
 
   sonar:
     needs: build
