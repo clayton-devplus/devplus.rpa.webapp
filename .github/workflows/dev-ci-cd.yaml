@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - development
-      
+
 jobs:
 
   build:
@@ -20,8 +20,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install and npm run build
         run: |
-          npm install
-          npm run build
+            - run: npm ci
+            - run: npm run test:prod
+            - run: npm run lint
 
   sonar:
     needs: build
