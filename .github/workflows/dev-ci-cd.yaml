@@ -1,0 +1,37 @@
+name: dev-ci-cd
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+
+  build:
+    name: Build App
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x,18.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install and npm run build
+        run: |
+          npm install
+          npm run build
+
+  sonar:
+    needs: build
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
