@@ -1,0 +1,46 @@
+name: Build and Deploy to GKE
+on:
+  push:
+    branches:
+      - development
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: ${{ secrets.GKE_CLUSTER_NAME }}      # Add your cluster name here.
+  GKE_ZONE: southamerica-east1-a   # Add your cluster zone here.
+  DEPLOYMENT_NAME: rpa-webapp-deployment # Add your deployment name here.
+  IMAGE: devplus/rpa.webapp
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Node $  
+        uses: actions/setup-node@v1
+        with:
+          node-version: $
+      - name: npm install and npm run build
+        run: |
+          npm ci
+          npm run build:ci
+
+  sonar:
+    needs: build
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: highbyte/sonarscan-dotnet@v2.1.3
+        with:
+          sonarProjectKey: devplus.rpa.webapp
+          sonarProjectName:  devplus.rpa.webapp
+          sonarHostname:  ${{ secrets.SONAR_HOST_URL }}      
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
