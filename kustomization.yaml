@@ -1,2 +1,5 @@
 resources:
 - deploy/rpa-webapp-deployment.yaml
+- deploy/rpa-webapp-cert.yaml
+- deploy/rpa-webapp-port.yaml
+- deploy/rpa-webapp-ingress.yaml
